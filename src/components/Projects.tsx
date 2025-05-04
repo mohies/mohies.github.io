@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaAngular, FaBootstrap, FaCss3Alt, FaDatabase, FaGithub, FaHtml5, FaJs, FaTools } from 'react-icons/fa';
 import { SiDjango, SiTypescript, SiVuedotjs } from 'react-icons/si';

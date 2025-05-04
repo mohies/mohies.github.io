@@ -13,7 +13,6 @@ import {
   } from 'react-icons/fa';
   import {
     SiTailwindcss,
-    SiFlask,
     SiPostgresql,
     SiTypescript,
   } from 'react-icons/si';
