@@ -19,7 +19,7 @@ const Contact = () => {
       className="min-h-screen bg-gradient-to-b from-[#0f0f1f] to-[#1a1a2e] py-20 px-4 text-white"
     >
       <h2 className="text-[#ff003c] text-3xl font-extrabold font-mono mb-8 tracking-wider uppercase text-center">
-        Contacto
+        Contact
       </h2>
 
       <form
@@ -31,7 +31,7 @@ const Contact = () => {
       >
         <input
           type="text"
-          placeholder="Nombre"
+          placeholder="Name"
           className="p-3 border border-gray-400 rounded bg-white text-black"
           value={nombre}
           onChange={(e) => setNombre(e.target.value)}
@@ -46,7 +46,7 @@ const Contact = () => {
           required
         />
         <textarea
-          placeholder="Mensaje"
+          placeholder="Message"
           rows={5}
           className="p-3 border border-gray-400 rounded bg-white text-black"
           value={mensaje}

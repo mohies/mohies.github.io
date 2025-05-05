@@ -26,14 +26,14 @@ const Hero = () => {
               href="#contact"
               className="border border-white px-6 py-2 rounded text-white hover:bg-white hover:text-black transition"
             >
-              Contrátame
+              Contract me
             </a>
             <a
               href="/Resume.pdf"
               download
               className="border border-white px-6 py-2 rounded text-white hover:bg-red-500 hover:border-red-500 transition"
             >
-              Descargar CV
+              Download CV
             </a>
           </div>
 
