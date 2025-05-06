@@ -39,13 +39,14 @@ const projects = [
   },
   {
     id: 'sesiones',
-    title: 'Session Manager',
+    title: 'Session Manager - Video Game Tournament Platform',
     description:
-      'Web app using Django backend and classic frontend stack. Supports login, user registration, session control, and secure access management — perfect for admin panels.',
+      'Platform for managing video game tournaments with Django backend and custom frontend. Features include player registration, bracket management, match results, and secure session control.',
     techs: [<SiDjango />, <FaHtml5 />, <FaCss3Alt />, <FaJs />, <FaDatabase />],
-    github: 'https://github.com/mohies/Cliente', // Cliente como principal
-    extraRepo: 'https://github.com/mohies/Sesiones', // Backend como extra
+    github: 'https://github.com/mohies/Cliente',
+    extraRepo: 'https://github.com/mohies/Sesiones',
   },
+
 ];
 
 const Projects = () => {
@@ -75,11 +76,10 @@ const Projects = () => {
             <button
               key={project.id}
               onClick={() => setActiveTab(project.id)}
-              className={`px-3 py-1 rounded-md font-mono text-sm ${
-                activeTab === project.id
+              className={`px-3 py-1 rounded-md font-mono text-sm ${activeTab === project.id
                   ? 'bg-[#3c3c4e] text-white'
                   : 'bg-[#2a2a3b] text-gray-300 hover:bg-[#444]'
-              } transition`}
+                } transition`}
             >
               {project.title}
             </button>
