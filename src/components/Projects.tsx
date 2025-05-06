@@ -43,7 +43,8 @@ const projects = [
     description:
       'Web app using Django backend and classic frontend stack. Supports login, user registration, session control, and secure access management — perfect for admin panels.',
     techs: [<SiDjango />, <FaHtml5 />, <FaCss3Alt />, <FaJs />, <FaDatabase />],
-    github: 'https://github.com/mohies/Sesiones',
+    github: 'https://github.com/mohies/Cliente', // Cliente como principal
+    extraRepo: 'https://github.com/mohies/Sesiones', // Backend como extra
   },
 ];
 
@@ -118,8 +119,19 @@ const Projects = () => {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-blue-400 hover:text-blue-500 transition"
               >
-                <FaGithub /> View Source Code
+                <FaGithub /> View Client Code
               </a>
+
+              {activeProject?.extraRepo && (
+                <a
+                  href={activeProject.extraRepo}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-blue-400 hover:text-blue-500 transition ml-4"
+                >
+                  <FaGithub /> View Backend Code
+                </a>
+              )}
             </motion.div>
           </AnimatePresence>
         </div>
