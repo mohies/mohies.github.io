@@ -1,11 +1,11 @@
 import {
   FaHtml5, FaCss3Alt, FaJs, FaReact, FaAngular,
   FaBootstrap, FaPython, FaJava, FaGit, FaDocker,
-  FaGithub, FaMicrosoft, FaAws
+  FaGithub, FaMicrosoft, FaAws, FaVuejs
 } from 'react-icons/fa';
 import {
   SiTailwindcss, SiPostgresql, SiTypescript,
-  SiSpringboot, SiSqlite, SiMariadb
+  SiSpringboot, SiSqlite, SiMariadb, SiDjango
 } from 'react-icons/si';
 
 import { JSX, useState } from 'react';
@@ -14,13 +14,13 @@ type TechCategory = 'All' | 'Frontend' | 'Backend' | 'Tools';
 
 const techCategories: Record<TechCategory, string[]> = {
   All: [
-    'HTML', 'CSS', 'JavaScript', 'TypeScript', 'React', 'Angular',
-    'Tailwind', 'Bootstrap', 'Python', 'Java', 'SpringBoot',
+    'HTML', 'CSS', 'JavaScript', 'TypeScript', 'React', 'Angular', 'Vue',
+    'Tailwind', 'Bootstrap', 'Python', 'Java', 'SpringBoot', 'Django',
     'PostgreSQL', 'SQLite', 'MariaDB', 'Git', 'GitHub', 'Docker',
     'Microsoft', 'AWS'
   ],
-  Frontend: ['HTML', 'CSS', 'JavaScript', 'TypeScript', 'React', 'Angular', 'Tailwind', 'Bootstrap'],
-  Backend: ['Python', 'Java', 'SpringBoot', 'PostgreSQL', 'SQLite', 'MariaDB'],
+  Frontend: ['HTML', 'CSS', 'JavaScript', 'TypeScript', 'React', 'Angular', 'Vue', 'Tailwind', 'Bootstrap'],
+  Backend: ['Python', 'Java', 'SpringBoot', 'Django', 'PostgreSQL', 'SQLite', 'MariaDB'],
   Tools: ['Git', 'GitHub', 'Docker', 'Microsoft', 'AWS'],
 };
 
@@ -31,11 +31,13 @@ const techIcons: { [key: string]: JSX.Element } = {
   TypeScript: <SiTypescript className="text-blue-600" />,
   React: <FaReact className="text-cyan-400" />,
   Angular: <FaAngular className="text-red-500" />,
+  Vue: <FaVuejs className="text-green-500" />,
   Tailwind: <SiTailwindcss className="text-sky-400" />,
   Bootstrap: <FaBootstrap className="text-purple-600" />,
   Python: <FaPython className="text-yellow-300" />,
   Java: <FaJava className="text-red-400" />,
   SpringBoot: <SiSpringboot className="text-green-500" />,
+  Django: <SiDjango className="text-green-800" />,
   PostgreSQL: <SiPostgresql className="text-blue-500" />,
   SQLite: <SiSqlite className="text-blue-400" />,
   MariaDB: <SiMariadb className="text-teal-600" />,
