@@ -5,6 +5,8 @@ import { motion } from 'framer-motion'
 
 const Hero = () => {
   const [open, setOpen] = useState(false)
+  // Leemos la dirección de contacto desde la variable de entorno para no exponerla en el código
+  const contactEmail = import.meta.env.VITE_CONTACT_EMAIL || ''
 
   return (
     <section id="home" className="h-screen w-full bg-gradient-to-b from-[#0f0f1f] to-[#1a1a2e] flex items-center justify-center overflow-hidden relative">
@@ -56,7 +58,11 @@ const Hero = () => {
           <div className="mt-6 flex gap-6 text-2xl">
             <a href="https://linkedin.com/in/mohcenbenizza" target="_blank" rel="noopener noreferrer"><FaLinkedin /></a>
             <a href="https://github.com/mohies" target="_blank" rel="noopener noreferrer"><FaGithub /></a>
-            <a href="mailto:mohcenben2001@gmail.com"><FaEnvelope /></a>
+            {contactEmail ? (
+              <a href={`mailto:${contactEmail}`}><FaEnvelope /></a>
+            ) : (
+              <a href="#" onClick={() => alert('Dirección de contacto no configurada. Añade VITE_CONTACT_EMAIL en tu .env')}><FaEnvelope /></a>
+            )}
           </div>
         </div>
       </div>

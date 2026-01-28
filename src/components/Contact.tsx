@@ -8,9 +8,14 @@ const Contact = () => {
   const handleMail = () => {
     const subject = `Mensaje de ${nombre}`;
     const body = `Nombre: ${nombre}%0ACorreo: ${email}%0AMensaje:%0A${mensaje}`;
-    window.location.href = `mailto:mohcenben2001@gmail.com?subject=${encodeURIComponent(
-      subject
-    )}&body=${body}`;
+    const contactEmail = import.meta.env.VITE_CONTACT_EMAIL || ''
+    if (contactEmail) {
+      window.location.href = `mailto:${contactEmail}?subject=${encodeURIComponent(
+        subject
+      )}&body=${body}`
+    } else {
+      alert('Dirección de contacto no configurada. Añade VITE_CONTACT_EMAIL en tu .env')
+    }
   };
 
   return (
