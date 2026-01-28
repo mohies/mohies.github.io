@@ -31,6 +31,25 @@ export default tseslint.config({
 })
 ```
 
+## EmailJS setup (contact modal)
+
+If you want the contact modal to send emails directly from the site, configure EmailJS:
+
+- Create a free account at https://www.emailjs.com/
+- Create a Service and a Template, then copy the Service ID, Template ID and Public Key.
+- Copy `.env.example` to `.env` and fill the values:
+
+```
+VITE_EMAILJS_SERVICE_ID=service_xxx
+VITE_EMAILJS_TEMPLATE_ID=template_xxx
+VITE_EMAILJS_PUBLIC_KEY=user_xxx
+```
+
+- Restart the dev server after adding the `.env` file so Vite loads the environment variables.
+- If you don't configure EmailJS, the modal will fallback to opening the user's mail client.
+
+Security note: Never commit your real `.env` to version control; keep secrets out of the repo.
+
 You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
 ```js

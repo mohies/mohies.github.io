@@ -17,8 +17,8 @@ const Navbar = () => {
     <header className="fixed top-0 w-full bg-[#0f0f1f] text-white z-50 shadow-lg">
       <nav className="max-w-7xl mx-auto flex justify-between items-center p-4">
       <a href="/" className="flex items-center space-x-2">
-  <img src="/logo.png" alt="Mohcen.dev logo" className="h-10 w-auto" />
-</a>
+      <img src="/logo.png" alt="Mohcen.dev logo" loading="lazy" className="h-10 w-auto" />
+    </a>
 
 
         {/* Desktop menu */}

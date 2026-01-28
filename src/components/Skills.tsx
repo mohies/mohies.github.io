@@ -1,27 +1,78 @@
 import {
-  FaHtml5, FaCss3Alt, FaJs, FaReact, FaAngular,
-  FaBootstrap, FaPython, FaJava, FaGit, FaDocker,
-  FaGithub, FaMicrosoft, FaAws, FaVuejs
-} from 'react-icons/fa';
+  FaHtml5,
+  FaCss3Alt,
+  FaJs,
+  FaReact,
+  FaAngular,
+  FaBootstrap,
+  FaPython,
+  FaJava,
+  FaGit,
+  FaDocker,
+  FaGithub,
+  FaMicrosoft,
+  FaAws,
+  FaVuejs,
+} from "react-icons/fa";
 import {
-  SiTailwindcss, SiPostgresql, SiTypescript,
-  SiSpringboot, SiSqlite, SiMariadb, SiDjango
-} from 'react-icons/si';
+  SiTailwindcss,
+  SiPostgresql,
+  SiTypescript,
+  SiSpringboot,
+  SiSqlite,
+  SiMariadb,
+  SiDjango,
+} from "react-icons/si";
 
-import { JSX, useState } from 'react';
+import { JSX, useState } from "react";
 
-type TechCategory = 'All' | 'Frontend' | 'Backend' | 'Tools';
+type TechCategory = "All" | "Frontend" | "Backend" | "Tools";
 
 const techCategories: Record<TechCategory, string[]> = {
   All: [
-    'HTML', 'CSS', 'JavaScript', 'TypeScript', 'React', 'Angular', 'Vue',
-    'Tailwind', 'Bootstrap', 'Python', 'Java', 'SpringBoot', 'Django',
-    'PostgreSQL', 'SQLite', 'MariaDB', 'Git', 'GitHub', 'Docker',
-    'Microsoft', 'AWS'
+    "HTML",
+    "CSS",
+    "JavaScript",
+    "TypeScript",
+    "React",
+    "Angular",
+    "Vue",
+    "Tailwind",
+    "Bootstrap",
+    "Python",
+    "Java",
+    "SpringBoot",
+    "Django",
+    "PostgreSQL",
+    "SQLite",
+    "MariaDB",
+    "Git",
+    "GitHub",
+    "Docker",
+    "Microsoft",
+    "AWS",
   ],
-  Frontend: ['HTML', 'CSS', 'JavaScript', 'TypeScript', 'React', 'Angular', 'Vue', 'Tailwind', 'Bootstrap'],
-  Backend: ['Python', 'Java', 'SpringBoot', 'Django', 'PostgreSQL', 'SQLite', 'MariaDB'],
-  Tools: ['Git', 'GitHub', 'Docker', 'Microsoft', 'AWS'],
+  Frontend: [
+    "HTML",
+    "CSS",
+    "JavaScript",
+    "TypeScript",
+    "React",
+    "Angular",
+    "Vue",
+    "Tailwind",
+    "Bootstrap",
+  ],
+  Backend: [
+    "Python",
+    "Java",
+    "SpringBoot",
+    "Django",
+    "PostgreSQL",
+    "SQLite",
+    "MariaDB",
+  ],
+  Tools: ["Git", "GitHub", "Docker", "Microsoft", "AWS"],
 };
 
 const techIcons: { [key: string]: JSX.Element } = {
@@ -49,7 +100,7 @@ const techIcons: { [key: string]: JSX.Element } = {
 };
 
 const Skills = () => {
-  const [active, setActive] = useState<TechCategory>('All');
+  const [active, setActive] = useState<TechCategory>("All");
 
   return (
     <section
@@ -67,8 +118,8 @@ const Skills = () => {
               key={category}
               className={`px-4 py-2 rounded font-mono text-sm ${
                 active === category
-                  ? 'bg-red-600 text-white'
-                  : 'bg-[#1a1a2e] text-white hover:bg-[#333]'
+                  ? "bg-red-600 text-white"
+                  : "bg-[#1a1a2e] text-white hover:bg-[#333]"
               } transition`}
               onClick={() => setActive(category as TechCategory)}
             >

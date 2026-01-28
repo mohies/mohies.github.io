@@ -86,8 +86,8 @@ const Projects = () => {
           ))}
         </div>
 
-        {/* Project content */}
-        <div className="p-6 min-h-[200px] bg-[#181824]">
+        {/* Project content with preview card */}
+        <div className="p-6 min-h-[260px] bg-[#181824]">
           <AnimatePresence mode="wait">
             <motion.div
               key={activeProject?.id}
@@ -99,45 +99,87 @@ const Projects = () => {
               <h3 className="text-2xl font-bold mb-1 text-cyan-400">
                 {activeProject?.title}
               </h3>
-              <p className="mb-4 text-gray-300">{activeProject?.description}</p>
+              <p className="mb-6 text-gray-300">{activeProject?.description}</p>
 
-              <div className="flex items-center flex-wrap gap-2 mb-4">
-                <FaTools className="text-yellow-400 text-xl" />
-                {activeProject?.techs.map((tech, index) => (
-                  <span
-                    key={index}
-                    className="bg-[#292932] text-white text-xl px-3 py-2 rounded-full flex items-center justify-center"
-                  >
-                    {tech}
-                  </span>
-                ))}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
+                {/* Preview card */}
+                <motion.div whileHover={{ scale: 1.02 }} className="relative group">
+                  <div className="h-52 rounded-lg overflow-hidden bg-gradient-to-br from-[#21212b] to-[#15151a] shadow-lg border border-gray-700">
+                    {/* If you add project images in /public or /src/assets, replace this block with an <img /> */}
+                    <div className="h-full w-full flex items-center justify-center text-6xl text-gray-400">
+                      {activeProject?.techs[0] || <FaHtml5 />}
+                    </div>
+                  </div>
+
+                  {/* Overlay */}
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
+                    <div className="flex gap-3">
+                      <a
+                        href={activeProject?.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="px-4 py-2 bg-blue-500 rounded text-sm font-mono shadow hover:bg-blue-600"
+                      >
+                        <FaGithub className="inline mr-2" /> Client Code
+                      </a>
+
+                      {activeProject?.extraRepo && (
+                        <a
+                          href={activeProject.extraRepo}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="px-4 py-2 bg-green-600 rounded text-sm font-mono shadow hover:bg-green-700"
+                        >
+                          <FaGithub className="inline mr-2" /> Backend
+                        </a>
+                      )}
+                    </div>
+                  </div>
+                </motion.div>
+
+                {/* Tech badges + link */}
+                <div>
+                  <div className="flex items-center flex-wrap gap-2 mb-4">
+                    <FaTools className="text-yellow-400 text-xl" />
+                    {activeProject?.techs.map((tech, index) => (
+                      <span
+                        key={index}
+                        className="bg-[#292932] text-white text-xl px-3 py-2 rounded-full flex items-center justify-center"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+
+                  <div className="mt-2">
+                    <a
+                      href={activeProject?.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 text-blue-400 hover:text-blue-500 transition"
+                    >
+                      <FaGithub /> View Client Code
+                    </a>
+
+                    {activeProject?.extraRepo && (
+                      <a
+                        href={activeProject.extraRepo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 text-blue-400 hover:text-blue-500 transition ml-4"
+                      >
+                        <FaGithub /> View Backend Code
+                      </a>
+                    )}
+                  </div>
+                </div>
               </div>
-
-              <a
-                href={activeProject?.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-blue-400 hover:text-blue-500 transition"
-              >
-                <FaGithub /> View Client Code
-              </a>
-
-              {activeProject?.extraRepo && (
-                <a
-                  href={activeProject.extraRepo}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-blue-400 hover:text-blue-500 transition ml-4"
-                >
-                  <FaGithub /> View Backend Code
-                </a>
-              )}
             </motion.div>
           </AnimatePresence>
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
 export default Projects;
