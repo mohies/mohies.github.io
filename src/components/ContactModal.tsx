@@ -93,7 +93,7 @@ const ContactModal = ({ isOpen, onClose }: Props) => {
         initial={{ scale: 0.9, opacity: 0 }} // estado inicial de la animación
         animate={{ scale: 1, opacity: 1 }} // estado final de la animación
         exit={{ scale: 0.9, opacity: 0 }} // animación al desmontar
-        className="relative z-10 w-full max-w-xl bg-[#0b0b14] text-white rounded-lg p-6 shadow-lg"
+        className="relative z-10 w-full max-w-xl card text-white rounded-lg p-6 shadow-lg"
       >
         {/* Título del modal */}
         <h3 className="text-2xl font-bold mb-4">Contact me</h3>

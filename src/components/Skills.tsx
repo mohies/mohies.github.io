@@ -105,21 +105,21 @@ const Skills = () => {
   return (
     <section
       id="tech-stack"
-      className="min-h-screen bg-gradient-to-b from-[#0f0f1f] to-[#1a1a2e] py-20 px-4 text-center"
+      className="min-h-screen py-20 px-4 text-center"
     >
-      <h2 className="text-[#ff003c] text-3xl font-bold uppercase mb-10 font-mono tracking-wider">
+      <h2 className="text-3xl font-bold uppercase mb-10 tracking-wider bg-gradient-to-r from-purple-400 to-fuchsia-400 bg-clip-text text-transparent" style={{ fontFamily: 'var(--font-mono)' }}>
         Tech Stack
       </h2>
 
-      <div className="max-w-6xl mx-auto bg-white border-4 border-[#1a1a2e] rounded-lg p-6 shadow-xl">
+      <div className="max-w-6xl mx-auto card p-6">
         <div className="flex flex-wrap justify-center gap-2 mb-6">
           {Object.keys(techCategories).map((category) => (
             <button
               key={category}
-              className={`px-4 py-2 rounded font-mono text-sm ${
+                className={`px-4 py-2 rounded font-mono text-sm ${
                 active === category
                   ? "bg-red-600 text-white"
-                  : "bg-[#1a1a2e] text-white hover:bg-[#333]"
+                  : "btn-inactive text-white hover:bg-opacity-40"
               } transition`}
               onClick={() => setActive(category as TechCategory)}
             >

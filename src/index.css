@@ -1,7 +1,127 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+:root {
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+  --accent-primary: #a855f7;
+  --accent-secondary: #ec4899;
+  --accent-red: #ff003c;
+}
 
 html, body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
+  font-family: var(--font-sans);
+  /* ensure no white flash: keep the same base color on html */
+  background: linear-gradient(180deg, #0b0c12 0%, #0e1422 100%);
 }
+
+/* Apply hero gradient to entire page background */
+body {
+  /* Base gradient + subtle static colored 'blobs' using radial-gradients (cheap to render) */
+  background-image: 
+    radial-gradient(420px 420px at 6% 10%, rgba(255,107,203,0.12) 0%, rgba(255,107,203,0.06) 40%, transparent 70%),
+    radial-gradient(360px 360px at 92% 28%, rgba(34,211,170,0.08) 0%, rgba(34,211,170,0.04) 40%, transparent 70%),
+    radial-gradient(300px 300px at 20% 92%, rgba(96,165,250,0.08) 0%, rgba(124,58,237,0.05) 50%, transparent 75%),
+    linear-gradient(180deg, #0b0c12 0%, #0e1422 100%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  min-height: 100vh;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+/* Hero decorative blobs */
+.bg-hero-gradient{ background: linear-gradient(180deg, #0b0c12 0%, #0e1422 100%) }
+.blob{
+  position:absolute;
+  width:260px;
+  height:260px;
+  border-radius:50%;
+  /* remove blur (expensive) to improve scrolling performance */
+  filter: none;
+  opacity:0.48;
+  mix-blend-mode: normal;
+  transform: translate3d(0,0,0);
+  will-change: transform;
+  backface-visibility: hidden;
+}
+.blob-1{ left:-6%; top:6%; background: radial-gradient(circle at 20% 20%, #ff6bcb, #7c3aed) }
+.blob-2{ right:6%; top:26%; background: radial-gradient(circle at 80% 40%, #34d399, #06b6d4) }
+.blob-3{ left:18%; bottom:6%; background: radial-gradient(circle at 40% 70%, #60a5fa, #7c3aed) }
+
+/* Avatar frame */
+.avatar-frame{ padding:8px; border-radius:9999px; background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); box-shadow: 0 10px 30px rgba(2,6,23,0.45); display:inline-block }
+
+/* Hero text */
+.hero-title{ font-size: clamp(2.2rem, 4.5vw, 3.6rem); font-weight:800; background:linear-gradient(90deg,#fff 0%, #ffd1e8 40%, #ff9bd6 100%); -webkit-background-clip:text; background-clip:text; color:transparent; letter-spacing: -0.02em }
+.hero-subtitle{ font-size:1.05rem; color:#cfe8ff; font-family: var(--font-mono) }
+.hero-caret{ color:#60a5fa; margin-left:6px; animation: blink 1s steps(2,end) infinite }
+
+@keyframes blink{ 50%{ opacity:0 } }
+
+/* Buttons */
+.btn-neon{ background: linear-gradient(90deg,#7c3aed,#ff6bcb); color:white; padding:10px 16px; border-radius:10px; border:none; font-weight:600; box-shadow: 0 10px 30px rgba(124,58,237,0.18); transition: transform .18s }
+.btn-outline{ padding:10px 14px; border-radius:10px; border:1px solid rgba(255,255,255,0.06); color:#fff; background:transparent }
+
+/* Responsive tweaks */
+
+@media (max-width: 768px){
+  .blob{ display:none }
+  .avatar-frame{ transform: translateY(-6px) }
+  .hero-title{ text-align:center }
+  .hero-subtitle{ text-align:center }
+  /* avoid heavy effects on small devices */
+  .card, .card-sm { backdrop-filter: none; box-shadow: 0 6px 18px rgba(2,6,23,0.35) }
+}
+
+/* Global card style to keep components consistent over background */
+.card{
+  background: rgba(10,11,16,0.72);
+  border: 1px solid rgba(255,255,255,0.02);
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(2,6,23,0.32);
+  /* remove backdrop-filter to avoid repainting issues while scrolling */
+  backdrop-filter: none;
+}
+.card-sm{ background: rgba(8,9,12,0.48); border-radius:10px; border:1px solid rgba(255,255,255,0.03) }
+.btn-inactive{ background: rgba(255,255,255,0.03); padding:6px 10px; border-radius:8px }
+.pill{ background: rgba(255,255,255,0.03); padding:6px 10px; border-radius:999px }
+
+/* ensure sections are transparent to reveal global background */
+section[id]{ background: transparent }
+
+/* Respect user's reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .blob { display: none !important }
+  .hero-caret { animation: none !important }
+  * { transition: none !important; animation: none !important }
+}
+
+/* Performance optimizations */
+* { 
+  -webkit-tap-highlight-color: transparent;
+}
+img, video { 
+  content-visibility: auto;
+}
+.card, .about-card, .about-panel {
+  contain: layout style;
+}
+
+/* Emergency: hide animated decorative blobs to eliminate rendering lag */
+.global-bg { display: none }
+.showcase-cta{ background:transparent; border:1px solid rgba(255,255,255,0.06); padding:6px 10px; border-radius:10px; color:#fff; text-decoration:none; font-size:13px }
+
+/* About section styles */
+.about-card{ background: linear-gradient(180deg, rgba(8,10,14,0.72), rgba(10,12,18,0.64)); border-radius:12px; border:1px solid rgba(255,255,255,0.03) }
+.about-card .icon-circle{ width:44px; height:44px; border-radius:10px; display:inline-flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.02) }
+.about-panel{ background:linear-gradient(180deg, rgba(2,6,23,0.6), rgba(6,10,26,0.55)); border-radius:12px; border:1px solid rgba(124,58,237,0.12); box-shadow: 0 8px 28px rgba(2,6,23,0.45) }
+.about-panel .panel-body{ background: rgba(0,0,0,0.24); padding:12px; border-radius:8px; }
+.about-panel .stat{ border-radius:8px }
+.showcase-cta{ background:transparent; border:1px solid rgba(255,255,255,0.06); padding:6px 10px; border-radius:10px; color:#fff; text-decoration:none; font-size:13px }
+
+/* Small utility */
+.text-green-300{ color:#86efac }

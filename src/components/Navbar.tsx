@@ -14,19 +14,19 @@ const Navbar = () => {
   };
 
   return (
-    <header className="fixed top-0 w-full bg-[#0f0f1f] text-white z-50 shadow-lg">
-      <nav className="max-w-7xl mx-auto flex justify-between items-center p-4">
+    <header className="fixed top-0 w-full text-white z-50" style={{ background: 'linear-gradient(180deg, rgba(11,12,18,0.95) 0%, rgba(14,20,34,0.9) 100%)', backdropFilter: 'blur(8px)' }}>
+      <nav className="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
       <a href="/" className="flex items-center space-x-2">
       <img src="/logo.png" alt="Mohcen.dev logo" loading="lazy" className="h-10 w-auto" />
     </a>
 
 
         {/* Desktop menu */}
-        <ul className="hidden md:flex space-x-6 font-mono">
+        <ul className="hidden md:flex space-x-8" style={{ fontFamily: 'var(--font-mono)' }}>
           {navItems.map((item) => (
             <li
               key={item}
-              className="cursor-pointer hover:text-red-500 transition"
+              className="cursor-pointer text-gray-300 hover:text-purple-400 transition-colors duration-200 text-sm tracking-wide"
               onClick={() => scrollTo(item.toLowerCase().replace(" ", "-"))}
             >
               {item}
@@ -45,11 +45,11 @@ const Navbar = () => {
 
       {/* Mobile dropdown */}
       {isOpen && (
-        <ul className="md:hidden flex flex-col items-center bg-[#1a1a2e] pb-4 space-y-2 font-mono">
+        <ul className="md:hidden flex flex-col items-center pb-4 space-y-3" style={{ fontFamily: 'var(--font-mono)', background: 'rgba(11,12,18,0.98)' }}>
           {navItems.map((item) => (
             <li
               key={item}
-              className="cursor-pointer hover:text-red-400"
+              className="cursor-pointer text-gray-300 hover:text-purple-400 transition-colors py-1"
               onClick={() => scrollTo(item.toLowerCase().replace(" ", "-"))}
             >
               {item}

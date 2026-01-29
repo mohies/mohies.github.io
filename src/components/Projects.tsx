@@ -56,29 +56,29 @@ const Projects = () => {
   return (
     <section
       id="projects"
-      className="min-h-screen bg-gradient-to-b from-[#1a1a2e] to-[#0f0f1f] py-20 px-4 text-white"
+      className="min-h-screen py-20 px-4 text-white"
     >
-      <h2 className="text-4xl font-bold text-center text-red-500 mb-12 font-mono tracking-wide uppercase">
+      <h2 className="text-4xl font-bold text-center mb-12 tracking-wide uppercase bg-gradient-to-r from-purple-400 to-fuchsia-400 bg-clip-text text-transparent" style={{ fontFamily: 'var(--font-mono)' }}>
         Featured Projects
       </h2>
 
       <div className="max-w-5xl mx-auto rounded-lg shadow-lg overflow-hidden border border-gray-700">
         {/* Fake browser top bar */}
-        <div className="flex items-center space-x-2 px-4 py-2 bg-[#1a1a2e]">
+        <div className="flex items-center space-x-2 px-4 py-2 card-sm">
           <span className="w-3 h-3 bg-red-500 rounded-full"></span>
           <span className="w-3 h-3 bg-yellow-500 rounded-full"></span>
           <span className="w-3 h-3 bg-green-500 rounded-full"></span>
         </div>
 
         {/* Tabs */}
-        <div className="flex space-x-4 px-4 py-2 bg-[#1a1a2e] border-b border-gray-700">
+        <div className="flex space-x-4 px-4 py-2 card-sm border-b border-gray-700">
           {projects.map((project) => (
             <button
               key={project.id}
               onClick={() => setActiveTab(project.id)}
               className={`px-3 py-1 rounded-md font-mono text-sm ${activeTab === project.id
-                  ? 'bg-[#3c3c4e] text-white'
-                  : 'bg-[#2a2a3b] text-gray-300 hover:bg-[#444]'
+                      ? 'bg-gray-700 text-white'
+                      : 'btn-inactive text-gray-300 hover:bg-opacity-40'
                 } transition`}
             >
               {project.title}
@@ -87,7 +87,7 @@ const Projects = () => {
         </div>
 
         {/* Project content with preview card */}
-        <div className="p-6 min-h-[260px] bg-[#181824]">
+        <div className="p-6 min-h-[260px] card">
           <AnimatePresence mode="wait">
             <motion.div
               key={activeProject?.id}
@@ -143,11 +143,11 @@ const Projects = () => {
                     <FaTools className="text-yellow-400 text-xl" />
                     {activeProject?.techs.map((tech, index) => (
                       <span
-                        key={index}
-                        className="bg-[#292932] text-white text-xl px-3 py-2 rounded-full flex items-center justify-center"
-                      >
-                        {tech}
-                      </span>
+                          key={index}
+                          className="pill text-white text-xl px-3 py-2 rounded-full flex items-center justify-center"
+                        >
+                          {tech}
+                        </span>
                     ))}
                   </div>
 

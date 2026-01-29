@@ -21,14 +21,15 @@ const Contact = () => {
   return (
     <section
       id="contact"
-      className="min-h-screen bg-gradient-to-b from-[#0f0f1f] to-[#1a1a2e] py-20 px-4 text-white"
+      className="min-h-screen py-20 px-4 text-white"
     >
-      <h2 className="text-[#ff003c] text-3xl font-extrabold font-mono mb-8 tracking-wider uppercase text-center">
+      <h2 className="text-3xl font-extrabold mb-8 tracking-wider uppercase text-center bg-gradient-to-r from-purple-400 to-fuchsia-400 bg-clip-text text-transparent" style={{ fontFamily: 'var(--font-mono)' }}>
         Contact
       </h2>
 
       <form
-        className="grid gap-4 max-w-xl mx-auto font-mono"
+        className="grid gap-4 max-w-xl mx-auto card p-8"
+        style={{ fontFamily: 'var(--font-mono)' }}
         onSubmit={(e) => {
           e.preventDefault();
           handleMail();
@@ -37,7 +38,7 @@ const Contact = () => {
         <input
           type="text"
           placeholder="Name"
-          className="p-3 border border-gray-400 rounded bg-white text-black"
+          className="p-3 rounded bg-white/10 text-white placeholder-white/50 border border-white/10 focus:border-purple-400 focus:outline-none transition"
           value={nombre}
           onChange={(e) => setNombre(e.target.value)}
           required
@@ -45,7 +46,7 @@ const Contact = () => {
         <input
           type="email"
           placeholder="Email"
-          className="p-3 border border-gray-400 rounded bg-white text-black"
+          className="p-3 rounded bg-white/10 text-white placeholder-white/50 border border-white/10 focus:border-purple-400 focus:outline-none transition"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
@@ -53,16 +54,16 @@ const Contact = () => {
         <textarea
           placeholder="Message"
           rows={5}
-          className="p-3 border border-gray-400 rounded bg-white text-black"
+          className="p-3 rounded bg-white/10 text-white placeholder-white/50 border border-white/10 focus:border-purple-400 focus:outline-none transition resize-none"
           value={mensaje}
           onChange={(e) => setMensaje(e.target.value)}
           required
         ></textarea>
         <button
           type="submit"
-          className="bg-red-600 text-white px-6 py-2 rounded hover:bg-red-700 transition"
+          className="bg-gradient-to-r from-purple-500 to-fuchsia-500 text-white px-6 py-3 rounded font-semibold hover:from-purple-400 hover:to-fuchsia-400 transition shadow-lg"
         >
-          Submit
+          Send Message
         </button>
       </form>
     </section>
