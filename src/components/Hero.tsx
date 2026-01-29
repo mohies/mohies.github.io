@@ -1,7 +1,6 @@
 import { FaLinkedin, FaGithub, FaEnvelope } from "react-icons/fa";
 import { useEffect, useState } from 'react'
 import ContactModal from './ContactModal'
-import { motion } from 'framer-motion'
 
 const Hero = () => {
   const [open, setOpen] = useState(false)

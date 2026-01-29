@@ -1,6 +1,5 @@
 import { useTypewriter, Cursor } from 'react-simple-typewriter';
 import { FaLaptopCode, FaHeadset, FaGamepad, FaRocket, FaCode, FaServer, FaTools } from 'react-icons/fa';
-import { motion } from 'framer-motion'
 
 const About = () => {
   const [text] = useTypewriter({

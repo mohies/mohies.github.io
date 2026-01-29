@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { FiMessageCircle, FiX, FiSend } from 'react-icons/fi'
+import { FiMessageCircle, FiX } from 'react-icons/fi'
 import { AiOutlineUser, AiOutlineCode, AiOutlineMail, AiOutlineFile } from 'react-icons/ai'
 
 const OPTIONS = [
@@ -9,28 +9,7 @@ const OPTIONS = [
   { id: 'contact', label: 'Contacto', icon: <AiOutlineMail />, reply: '📬 ¡Me encantaría conectar contigo!\n\n📧 Usa el formulario de contacto en la sección Contact\n💼 LinkedIn: linkedin.com/in/mohcenbenizza\n🐙 GitHub: github.com/mohies\n\n¡Estoy abierto a nuevas oportunidades!' },
 ]
 
-function mockReply(text: string): string {
-  const t = text.toLowerCase()
-  if (t.includes('hola') || t.includes('hey') || t.includes('buenas')) {
-    return '¡Hola! 👋 ¿En qué puedo ayudarte? Puedes preguntarme sobre mi experiencia, proyectos o habilidades.'
-  }
-  if (t.includes('cv') || t.includes('currículum') || t.includes('curriculum')) {
-    return '📄 Mi CV está disponible para descarga. Puedes obtenerlo desde mis releases de GitHub o solicitarlo por el formulario de contacto.'
-  }
-  if (t.includes('proyecto') || t.includes('proyectos') || t.includes('portfolio')) {
-    return '🚀 He trabajado en 4 proyectos públicos — échales un vistazo en la sección Projects. ¡Cada uno tiene su propia historia!'
-  }
-  if (t.includes('habilidad') || t.includes('skills') || t.includes('tecnolog')) {
-    return '⚡ Mi stack principal:\n• React + TypeScript\n• TailwindCSS + Framer Motion\n• Vite + Node.js\n• Git + GitHub Actions'
-  }
-  if (t.includes('email') || t.includes('contacto') || t.includes('contactar')) {
-    return '📬 ¡Me encantaría saber de ti! Usa el formulario de contacto en la sección Contact o conéctate conmigo en LinkedIn.'
-  }
-  if (t.includes('experiencia') || t.includes('trabajo')) {
-    return '💼 Tengo 1 año de experiencia desarrollando aplicaciones web modernas. Siempre buscando nuevos retos y oportunidades de aprendizaje.'
-  }
-  return '🤔 Interesante pregunta... Estoy en modo demo, pero puedo contarte sobre mi experiencia, proyectos, skills o cómo contactarme. ¿Qué te gustaría saber?'
-}
+// Demo-only: bot replies are provided via predefined OPTIONS; free-text replies removed for performance
 
 const ChatBot: React.FC = () => {
   const [open, setOpen] = useState(false)
@@ -38,7 +17,6 @@ const ChatBot: React.FC = () => {
     { from: 'bot', text: '¡Hola! 👋 Soy el asistente de Mohcen. ¿Qué te gustaría saber?' },
   ])
   const [typing, setTyping] = useState(false)
-  const [input, setInput] = useState('')
   const messagesEndRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -68,18 +46,7 @@ const ChatBot: React.FC = () => {
     }, 600)
   }
 
-  function handleSubmit(e?: React.FormEvent) {
-    e?.preventDefault()
-    const text = input.trim()
-    if (!text) return
-    pushMessage('user', text)
-    setInput('')
-    setTyping(true)
-    setTimeout(() => {
-      setTyping(false)
-      pushMessage('bot', mockReply(text))
-    }, 800)
-  }
+  // input submit removed; ChatBot works with quick options in demo mode
 
   return (
     <div className="fixed bottom-5 right-5 z-50">
