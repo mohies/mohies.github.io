@@ -15,13 +15,13 @@ import {
   FaReact,
   FaVuejs,
 } from 'react-icons/fa'
-import { SiDjango, SiMariadb, SiPostgresql, SiSpringboot, SiSqlite, SiTailwindcss, SiTypescript } from 'react-icons/si'
+import { SiDjango, SiMariadb, SiOracle, SiPostgresql, SiSpringboot, SiSqlite, SiTailwindcss, SiTypescript } from 'react-icons/si'
 import SkillsView, { type TechCategory, type TechIconMap } from './SkillsView'
 
 const techCategories: Record<TechCategory, string[]> = {
-  All: ['HTML', 'CSS', 'JavaScript', 'TypeScript', 'React', 'Angular', 'Vue', 'Tailwind', 'Bootstrap', 'Python', 'Java', 'SpringBoot', 'Django', 'PostgreSQL', 'SQLite', 'MariaDB', 'Git', 'GitHub', 'Docker', 'Microsoft', 'AWS'],
+  All: ['HTML', 'CSS', 'JavaScript', 'TypeScript', 'React', 'Angular', 'Vue', 'Tailwind', 'Bootstrap', 'Python', 'Java', 'SpringBoot', 'Django', 'PostgreSQL', 'SQLite', 'MariaDB', 'Oracle', 'Git', 'GitHub', 'Docker', 'Microsoft', 'AWS'],
   Frontend: ['HTML', 'CSS', 'JavaScript', 'TypeScript', 'React', 'Angular', 'Vue', 'Tailwind', 'Bootstrap'],
-  Backend: ['Python', 'Java', 'SpringBoot', 'Django', 'PostgreSQL', 'SQLite', 'MariaDB'],
+  Backend: ['Python', 'Java', 'SpringBoot', 'Django', 'PostgreSQL', 'SQLite', 'MariaDB', 'Oracle'],
   Tools: ['Git', 'GitHub', 'Docker', 'Microsoft', 'AWS'],
 }
 
@@ -42,6 +42,7 @@ const techIcons: TechIconMap = {
   PostgreSQL: <SiPostgresql color="#3b82f6" />,
   SQLite: <SiSqlite color="#60a5fa" />,
   MariaDB: <SiMariadb color="#0f766e" />,
+  Oracle: <SiOracle color="#ef4444" />,
   Git: <FaGit color="#f97316" />,
   GitHub: <FaGithub color="#111827" />,
   Docker: <FaDocker color="#3b82f6" />,
