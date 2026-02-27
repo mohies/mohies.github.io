@@ -1,5 +1,4 @@
 import Navbar from './components/Navbar';
-import GlobalBackground from './components/GlobalBackground';
 import Hero from './components/Hero';
 import About from './components/About';
 import Skills from './components/Skills';
@@ -10,7 +9,6 @@ import ChatBot from './components/ChatBot';
 function App() {
   return (
     <>
-      <GlobalBackground />
       <Navbar />
       <Hero />
       <About />

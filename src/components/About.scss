@@ -1,0 +1,354 @@
+.about-section {
+  padding: 6rem 0;
+  position: relative;
+}
+
+.about-heading {
+  margin-bottom: 3rem;
+  text-align: center;
+
+  .section-title {
+    margin-top: 1rem;
+  }
+
+  .section-copy {
+    margin: 1rem auto 0;
+    max-width: 42rem;
+  }
+}
+
+.about-card {
+  overflow: hidden;
+  padding: 0;
+}
+
+.about-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+}
+
+.about-profile {
+  padding: 2rem;
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.about-profile__header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.about-profile__badge {
+  width: 5rem;
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1.5rem;
+  background: linear-gradient(135deg, #34d399 0%, #22d3ee 100%);
+  color: #020617;
+  font-size: 2rem;
+  font-weight: 700;
+  box-shadow: 0 20px 40px rgba(34, 211, 238, 0.2);
+}
+
+.about-profile__kicker {
+  color: #86efac;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.about-profile__title {
+  margin: 0.35rem 0 0;
+  font-size: 2rem;
+  color: #fff;
+}
+
+.about-profile__subtitle {
+  margin-top: 0.35rem;
+  color: #94a3b8;
+}
+
+.about-terminal {
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1.5rem;
+  background: rgba(2, 6, 23, 0.7);
+}
+
+.about-terminal__bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.9rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.about-terminal__dot {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 999px;
+}
+
+.about-terminal__dot--red {
+  background: rgba(239, 68, 68, 0.85);
+}
+
+.about-terminal__dot--yellow {
+  background: rgba(234, 179, 8, 0.85);
+}
+
+.about-terminal__dot--green {
+  background: rgba(34, 197, 94, 0.85);
+}
+
+.about-terminal__label {
+  margin-left: 0.5rem;
+  color: #64748b;
+  font-size: 0.8rem;
+}
+
+.about-terminal__body {
+  min-height: 10.5rem;
+  padding: 1.25rem 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  color: #34d399;
+}
+
+.about-terminal__line {
+  margin: 0;
+  min-height: 2rem;
+  line-height: 1.75;
+}
+
+.about-terminal__line + .about-terminal__line {
+  margin-top: 0.35rem;
+}
+
+.about-terminal__line--muted {
+  color: #e2e8f0;
+}
+
+.about-skills {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.about-skill-card {
+  padding: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1.25rem;
+  background: rgba(255, 255, 255, 0.05);
+  text-align: center;
+}
+
+.about-skill-icon {
+  width: 3rem;
+  height: 3rem;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1rem;
+  color: #020617;
+  font-size: 1.4rem;
+  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.28);
+}
+
+.about-skill-icon--cyan {
+  background: linear-gradient(135deg, #22d3ee 0%, #3b82f6 100%);
+}
+
+.about-skill-icon--green {
+  background: linear-gradient(135deg, #4ade80 0%, #10b981 100%);
+}
+
+.about-skill-icon--orange {
+  background: linear-gradient(135deg, #fb923c 0%, #ef4444 100%);
+}
+
+.about-skill-card__label {
+  margin-top: 0.8rem;
+  color: #e5e7eb;
+  font-size: 0.95rem;
+}
+
+.about-stats {
+  margin-top: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.about-stats__divider {
+  width: 1px;
+  height: 2.5rem;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.about-stat {
+  text-align: center;
+}
+
+.about-stat__value {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.about-stat__value--green {
+  color: #86efac;
+}
+
+.about-stat__value--blue {
+  color: #7dd3fc;
+}
+
+.about-stat__value--orange {
+  color: #fdba74;
+}
+
+.about-stat__label {
+  margin-top: 0.25rem;
+  color: #94a3b8;
+  font-size: 0.75rem;
+}
+
+.about-content {
+  padding: 2rem;
+}
+
+.about-features {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.about-feature-card {
+  padding: 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1.5rem;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.about-feature-icon {
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.06);
+  font-size: 1.4rem;
+}
+
+.about-feature-icon--cyan {
+  color: #22d3ee;
+}
+
+.about-feature-icon--orange {
+  color: #fb923c;
+}
+
+.about-feature-icon--green {
+  color: #4ade80;
+}
+
+.about-feature-icon--blue {
+  color: #38bdf8;
+}
+
+.about-feature-card__title {
+  margin: 1rem 0 0.5rem;
+  color: #fff;
+  font-size: 1.1rem;
+}
+
+.about-feature-card__description {
+  margin: 0;
+  color: #94a3b8;
+  line-height: 1.7;
+  font-size: 0.95rem;
+}
+
+.about-cta {
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  border: 1px solid rgba(52, 211, 153, 0.2);
+  border-radius: 1.75rem;
+  background: linear-gradient(90deg, rgba(52, 211, 153, 0.08) 0%, rgba(34, 211, 238, 0.08) 100%);
+  text-align: center;
+}
+
+.about-cta__text {
+  margin: 0 0 1rem;
+  color: #fff;
+  font-size: 1.05rem;
+}
+
+.about-cta__accent {
+  color: #86efac;
+}
+
+.about-cta__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  padding: 0.9rem 1.25rem;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #22c55e 0%, #14b8a6 100%);
+  color: #04111a;
+  font-weight: 700;
+}
+
+.about-cta__arrow {
+  font-size: 1.1rem;
+}
+
+@media (max-width: 960px) {
+  .about-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .about-profile {
+    border-right: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+}
+
+@media (max-width: 640px) {
+  .about-section {
+    padding: 5rem 0;
+  }
+
+  .about-profile,
+  .about-content {
+    padding: 1.25rem;
+  }
+
+  .about-profile__header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .about-profile__title {
+    font-size: 1.65rem;
+  }
+
+  .about-skills,
+  .about-features {
+    grid-template-columns: 1fr;
+  }
+
+  .about-stats {
+    gap: 1rem;
+  }
+}

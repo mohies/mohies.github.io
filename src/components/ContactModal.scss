@@ -1,0 +1,17 @@
+.contact-modal { position: fixed; inset: 0; z-index: 60; display: flex; align-items: center; justify-content: center; padding: 1rem; }
+.contact-modal__backdrop { position: absolute; inset: 0; background: rgba(0, 0, 0, 0.6); }
+.contact-modal__panel { position: relative; z-index: 1; width: min(100%, 42rem); padding: 1.5rem; }
+.contact-modal__header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.25rem; }
+.contact-modal__icon { display: flex; align-items: center; justify-content: center; width: 2.75rem; height: 2.75rem; border-radius: 1rem; background: rgba(52, 211, 153, 0.15); color: #86efac; font-size: 1.25rem; }
+.contact-modal__title { margin: 0; font-size: 1.7rem; }
+.contact-modal__subtitle { margin: 0.3rem 0 0; color: var(--muted); }
+.contact-modal__form { display: grid; gap: 0.75rem; }
+.contact-modal__input { width: 100%; padding: 1rem; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 1rem; background: rgba(255, 255, 255, 0.05); color: #fff; outline: none; }
+.contact-modal__input:focus { border-color: rgba(134, 239, 172, 0.6); }
+.contact-modal__input--textarea { resize: none; }
+.contact-modal__actions { display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 0.25rem; }
+.contact-modal__button { display: inline-flex; align-items: center; justify-content: center; padding: 0.9rem 1.2rem; border-radius: 999px; font-weight: 700; }
+.contact-modal__button--ghost { border: 1px solid rgba(255, 255, 255, 0.1); background: rgba(255, 255, 255, 0.03); color: #fff; }
+.contact-modal__button--primary { border: 0; background: linear-gradient(90deg, #22c55e 0%, #14b8a6 100%); color: #04111a; }
+
+@media (max-width: 640px) { .contact-modal__actions { flex-direction: column; } }

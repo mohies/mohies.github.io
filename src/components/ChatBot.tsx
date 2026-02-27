@@ -1,20 +1,38 @@
-import React, { useState, useEffect, useRef } from 'react'
-import { FiMessageCircle, FiX } from 'react-icons/fi'
-import { AiOutlineUser, AiOutlineCode, AiOutlineMail, AiOutlineFile } from 'react-icons/ai'
+import { useEffect, useRef, useState } from 'react'
+import { AiOutlineCode, AiOutlineFile, AiOutlineMail, AiOutlineUser } from 'react-icons/ai'
+import ChatBotView, { type ChatMessage, type ChatOption } from './ChatBotView'
 
-const OPTIONS = [
-  { id: 'about', label: 'Sobre mí', icon: <AiOutlineUser />, reply: '👨‍💻 Soy Mohcen Benizza, Web Developer & IT Support.\n\n• Desarrollo web fullstack con enfoque en UI/UX\n• Soporte IT: troubleshooting, mantenimiento y atención a usuarios\n• Apasionado por crear interfaces accesibles, rápidas y con atención al detalle\n• Trato cada bug como un puzzle y cada feature como un nuevo nivel que diseñar 🎮' },
-  { id: 'skills', label: 'Skills', icon: <AiOutlineCode />, reply: '⚡ Mi stack tecnológico:\n\n💻 Frontend: React, Angular, Vue, TypeScript, TailwindCSS, Bootstrap, Framer Motion\n🔧 Backend: Python, Django, Java, Spring Boot\n🗄️ Bases de datos: PostgreSQL, SQLite, MariaDB\n🛠️ Herramientas: Git, GitHub, Docker, AWS, Microsoft\n🚀 Deploy: Vite, Vercel, Netlify, GitHub Pages' },
-  { id: 'projects', label: 'Proyectos', icon: <AiOutlineFile />, reply: '🚀 Mis proyectos destacados:\n\n1️⃣ Eventia - Plataforma de gestión de eventos (Django + Angular)\n2️⃣ RAWG Explorer - Navegador de juegos con API RAWG (Angular)\n3️⃣ Deezerfy - App de música con Vue.js y Deezer API\n4️⃣ Session Manager - Plataforma de torneos de videojuegos (Django)\n\n¡Visita la sección Projects para ver más detalles!' },
-  { id: 'contact', label: 'Contacto', icon: <AiOutlineMail />, reply: '📬 ¡Me encantaría conectar contigo!\n\n📧 Usa el formulario de contacto en la sección Contact\n💼 LinkedIn: linkedin.com/in/mohcenbenizza\n🐙 GitHub: github.com/mohies\n\n¡Estoy abierto a nuevas oportunidades!' },
+const options: ChatOption[] = [
+  {
+    id: 'about',
+    label: 'About',
+    icon: <AiOutlineUser />,
+    reply: 'I am Mohcen Benizza, a web developer with IT support experience. I focus on responsive UI, frontend quality and practical delivery.',
+  },
+  {
+    id: 'skills',
+    label: 'Skills',
+    icon: <AiOutlineCode />,
+    reply: 'Main stack: React, Angular, Vue, TypeScript, TailwindCSS, Bootstrap, Django, Spring Boot, PostgreSQL, Docker, AWS and GitHub.',
+  },
+  {
+    id: 'projects',
+    label: 'Projects',
+    icon: <AiOutlineFile />,
+    reply: 'Featured projects include Eventia, RAWG Explorer, Deezerfy and Session Manager. Check the Projects section for the details and repositories.',
+  },
+  {
+    id: 'contact',
+    label: 'Contact',
+    icon: <AiOutlineMail />,
+    reply: 'Use the contact form, LinkedIn or GitHub links in the Contact section. I am open to collaborations and product work.',
+  },
 ]
 
-// Demo-only: bot replies are provided via predefined OPTIONS; free-text replies removed for performance
-
-const ChatBot: React.FC = () => {
+const ChatBot = () => {
   const [open, setOpen] = useState(false)
-  const [messages, setMessages] = useState<Array<{ from: 'bot' | 'user'; text: string }>>([
-    { from: 'bot', text: '¡Hola! 👋 Soy el asistente de Mohcen. ¿Qué te gustaría saber?' },
+  const [messages, setMessages] = useState<ChatMessage[]>([
+    { from: 'bot', text: 'Hi. I am Mohcens assistant. What do you want to know?' },
   ])
   const [typing, setTyping] = useState(false)
   const messagesEndRef = useRef<HTMLDivElement>(null)
@@ -24,119 +42,37 @@ const ChatBot: React.FC = () => {
   }, [messages, typing])
 
   useEffect(() => {
-    const onEsc = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setOpen(false)
+    const onEsc = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setOpen(false)
     }
+
     window.addEventListener('keydown', onEsc)
     return () => window.removeEventListener('keydown', onEsc)
   }, [])
 
-  function pushMessage(from: 'bot' | 'user', text: string) {
-    setMessages(prev => [...prev, { from, text }])
-  }
+  const handleOptionClick = (optionId: string) => {
+    const option = options.find((item) => item.id === optionId)
+    if (!option) return
 
-  function handleOptionClick(optId: string) {
-    const opt = OPTIONS.find(o => o.id === optId)
-    if (!opt) return
-    pushMessage('user', opt.label)
+    setMessages((prev) => [...prev, { from: 'user', text: option.label }])
     setTyping(true)
-    setTimeout(() => {
+
+    window.setTimeout(() => {
       setTyping(false)
-      pushMessage('bot', opt.reply)
+      setMessages((prev) => [...prev, { from: 'bot', text: option.reply }])
     }, 600)
   }
 
-  // input submit removed; ChatBot works with quick options in demo mode
-
   return (
-    <div className="fixed bottom-5 right-5 z-50">
-      {/* Chat Window */}
-      {open && (
-        <div
-          className="w-80 md:w-[360px] mb-4 rounded-3xl overflow-hidden shadow-2xl border border-purple-400/20"
-          style={{
-            background: 'linear-gradient(145deg, rgba(139,92,246,0.95) 0%, rgba(88,28,135,0.98) 50%, rgba(30,27,75,0.99) 100%)',
-          }}
-        >
-          {/* Header */}
-          <div className="relative px-5 py-4 bg-gradient-to-r from-purple-500/40 to-fuchsia-500/40">
-            <div className="flex items-center gap-3">
-              <div className="w-11 h-11 rounded-full bg-gradient-to-br from-white/30 to-white/10 flex items-center justify-center shadow-lg">
-                <span className="text-2xl">🤖</span>
-              </div>
-              <div>
-                <div className="font-bold text-white text-base">Asistente Virtual</div>
-                <div className="flex items-center gap-1.5">
-                  <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
-                  <span className="text-xs text-green-200">Online • Modo demo</span>
-                </div>
-              </div>
-            </div>
-            <button
-              aria-label="Cerrar"
-              onClick={() => setOpen(false)}
-              className="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors"
-            >
-              <FiX className="text-white text-lg" />
-            </button>
-          </div>
-
-          {/* Messages */}
-          <div className="px-4 py-3 h-52 overflow-y-auto flex flex-col gap-3">
-            {messages.map((m, i) => (
-              <div
-                key={i}
-                className={
-                  m.from === 'bot'
-                    ? 'self-start max-w-[85%] bg-white/15 rounded-2xl rounded-bl-md px-4 py-2.5 text-sm text-white shadow-sm whitespace-pre-line'
-                    : 'self-end max-w-[85%] bg-gradient-to-r from-fuchsia-500 to-pink-500 rounded-2xl rounded-br-md px-4 py-2.5 text-sm text-white shadow-lg'
-                }
-              >
-                {m.text}
-              </div>
-            ))}
-            {typing && (
-              <div className="self-start bg-white/15 rounded-2xl rounded-bl-md px-4 py-3 shadow-sm">
-                <div className="flex gap-1">
-                  <span className="w-2 h-2 bg-white/60 rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></span>
-                  <span className="w-2 h-2 bg-white/60 rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></span>
-                  <span className="w-2 h-2 bg-white/60 rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></span>
-                </div>
-              </div>
-            )}
-            <div ref={messagesEndRef} />
-          </div>
-
-          {/* Quick Options */}
-          <div className="px-4 py-3 flex gap-2 flex-wrap border-t border-white/10 bg-black/20">
-            {OPTIONS.map(o => (
-              <button
-                key={o.id}
-                type="button"
-                onClick={() => handleOptionClick(o.id)}
-                className="flex items-center gap-1.5 px-3 py-2 rounded-full bg-white/10 hover:bg-white/25 text-xs text-white/90 transition-all hover:scale-105"
-              >
-                <span className="text-sm">{o.icon}</span>
-                <span>{o.label}</span>
-              </button>
-            ))}
-          </div>
-        </div>
-      )}
-
-      {/* Floating Toggle Button */}
-      <button
-        className="w-16 h-16 rounded-full bg-gradient-to-br from-purple-500 via-fuchsia-500 to-pink-500 hover:opacity-90 flex items-center justify-center shadow-xl transition-opacity"
-        onClick={() => setOpen(v => !v)}
-        aria-label={open ? 'Cerrar asistente' : 'Abrir asistente'}
-      >
-        {open ? (
-          <FiX className="text-white text-3xl" />
-        ) : (
-          <FiMessageCircle className="text-white text-3xl" />
-        )}
-      </button>
-    </div>
+    <ChatBotView
+      messages={messages}
+      messagesEndRef={messagesEndRef}
+      open={open}
+      options={options}
+      typing={typing}
+      onOptionClick={handleOptionClick}
+      onToggle={() => setOpen((value) => !value)}
+    />
   )
 }
 

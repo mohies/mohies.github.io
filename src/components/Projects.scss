@@ -1,0 +1,41 @@
+.projects-section { padding: 6rem 0; }
+.projects-heading { margin-bottom: 3rem; text-align: center; }
+.projects-card { overflow: hidden; padding: 0; }
+.projects-card__bar { display: flex; align-items: center; gap: 0.55rem; padding: 0.9rem 1rem; border-radius: 0; border-width: 0 0 1px; }
+.projects-card__dot { width: 0.75rem; height: 0.75rem; border-radius: 999px; }
+.projects-card__dot--red { background: #ef4444; }
+.projects-card__dot--yellow { background: #eab308; }
+.projects-card__dot--green { background: #22c55e; }
+.projects-card__label { margin-left: 0.6rem; color: #64748b; font-family: var(--font-mono); font-size: 0.76rem; letter-spacing: 0.2em; text-transform: uppercase; }
+.projects-tabs-wrap { display: flex; align-items: center; gap: 0.75rem; padding: 1rem; border-bottom: 1px solid var(--line-soft); }
+.projects-tabs__arrow { flex: 0 0 auto; width: 2.75rem; height: 2.75rem; display: flex; align-items: center; justify-content: center; border: 1px solid var(--line-soft); border-radius: 999px; background: rgba(255, 255, 255, 0.05); color: #e2e8f0; font-size: 1.4rem; }
+.projects-tabs__arrow:disabled { opacity: 0.35; cursor: default; }
+.projects-tabs { display: flex; flex: 1 1 auto; gap: 0.6rem; overflow-x: auto; scroll-behavior: smooth; }
+.projects-tab { flex: 0 0 auto; padding: 0.8rem 1rem; border: 0; border-radius: 999px; background: rgba(255, 255, 255, 0.04); color: #cbd5e1; font-family: var(--font-mono); font-size: 0.84rem; }
+.projects-tab--active { background: var(--emerald); color: #04111a; }
+.projects-card__body { padding: 1.5rem 2rem 2rem; }
+.projects-card__title { margin: 0 0 0.5rem; color: #86efac; font-size: 1.7rem; }
+.projects-card__description { max-width: 48rem; margin: 0 0 1.5rem; color: #cbd5e1; line-height: 1.8; }
+.projects-layout { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); gap: 1.5rem; }
+.projects-preview__surface { display: flex; align-items: flex-end; min-height: 16rem; padding: 1.5rem; overflow: hidden; border: 1px solid var(--line-soft); border-radius: 1.75rem; background: linear-gradient(135deg, #020617 0%, #0f172a 100%); }
+.projects-preview__icon { display: flex; align-items: center; justify-content: center; width: 4rem; height: 4rem; margin-bottom: 1rem; border-radius: 1rem; background: rgba(52, 211, 153, 0.12); color: #86efac; font-size: 2rem; }
+.projects-preview__label { color: #64748b; font-family: var(--font-mono); font-size: 0.76rem; letter-spacing: 0.22em; text-transform: uppercase; }
+.projects-preview__copy { max-width: 30rem; margin: 0.9rem 0 0; color: var(--muted); line-height: 1.8; font-size: 0.95rem; }
+.projects-preview__actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1rem; }
+.projects-button { display: inline-flex; align-items: center; gap: 0.55rem; padding: 0.9rem 1.2rem; border: 1px solid transparent; border-radius: 999px; font-weight: 700; }
+.projects-button--primary { background: linear-gradient(90deg, #22c55e 0%, #14b8a6 100%); color: #04111a; }
+.projects-button--outline { border-color: rgba(255, 255, 255, 0.1); background: rgba(255, 255, 255, 0.03); color: #fff; }
+.projects-stack { padding: 1.5rem; }
+.projects-stack__header { display: inline-flex; align-items: center; gap: 0.55rem; color: #fdba74; font-family: var(--font-mono); font-size: 0.76rem; letter-spacing: 0.22em; text-transform: uppercase; }
+.projects-stack__pills { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1rem; }
+.projects-stack__pill { display: inline-flex; align-items: center; justify-content: center; min-width: 3rem; min-height: 3rem; padding: 0.65rem 0.9rem; border: 1px solid rgba(148, 163, 184, 0.16); border-radius: 999px; background: rgba(255, 255, 255, 0.04); color: #fff; font-size: 1.15rem; }
+.projects-stack__links { display: flex; flex-direction: column; gap: 0.9rem; margin-top: 1.5rem; }
+.projects-stack__link { display: inline-flex; align-items: center; gap: 0.55rem; color: #86efac; }
+.projects-stack__copy { margin: 0.4rem 0 0; color: var(--muted); line-height: 1.8; font-size: 0.95rem; }
+
+@media (max-width: 960px) { .projects-layout { grid-template-columns: 1fr; } }
+@media (max-width: 640px) {
+  .projects-card__body { padding: 1.25rem; }
+  .projects-tabs-wrap { gap: 0.5rem; padding: 0.9rem; }
+  .projects-tabs__arrow { width: 2.4rem; height: 2.4rem; }
+}

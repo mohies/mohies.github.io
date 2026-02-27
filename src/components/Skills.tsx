@@ -1,147 +1,65 @@
+import { useState } from 'react'
 import {
-  FaHtml5,
-  FaCss3Alt,
-  FaJs,
-  FaReact,
   FaAngular,
-  FaBootstrap,
-  FaPython,
-  FaJava,
-  FaGit,
-  FaDocker,
-  FaGithub,
-  FaMicrosoft,
   FaAws,
+  FaBootstrap,
+  FaCss3Alt,
+  FaDocker,
+  FaGit,
+  FaGithub,
+  FaHtml5,
+  FaJava,
+  FaJs,
+  FaMicrosoft,
+  FaPython,
+  FaReact,
   FaVuejs,
-} from "react-icons/fa";
-import {
-  SiTailwindcss,
-  SiPostgresql,
-  SiTypescript,
-  SiSpringboot,
-  SiSqlite,
-  SiMariadb,
-  SiDjango,
-} from "react-icons/si";
-
-import { JSX, useState } from "react";
-
-type TechCategory = "All" | "Frontend" | "Backend" | "Tools";
+} from 'react-icons/fa'
+import { SiDjango, SiMariadb, SiPostgresql, SiSpringboot, SiSqlite, SiTailwindcss, SiTypescript } from 'react-icons/si'
+import SkillsView, { type TechCategory, type TechIconMap } from './SkillsView'
 
 const techCategories: Record<TechCategory, string[]> = {
-  All: [
-    "HTML",
-    "CSS",
-    "JavaScript",
-    "TypeScript",
-    "React",
-    "Angular",
-    "Vue",
-    "Tailwind",
-    "Bootstrap",
-    "Python",
-    "Java",
-    "SpringBoot",
-    "Django",
-    "PostgreSQL",
-    "SQLite",
-    "MariaDB",
-    "Git",
-    "GitHub",
-    "Docker",
-    "Microsoft",
-    "AWS",
-  ],
-  Frontend: [
-    "HTML",
-    "CSS",
-    "JavaScript",
-    "TypeScript",
-    "React",
-    "Angular",
-    "Vue",
-    "Tailwind",
-    "Bootstrap",
-  ],
-  Backend: [
-    "Python",
-    "Java",
-    "SpringBoot",
-    "Django",
-    "PostgreSQL",
-    "SQLite",
-    "MariaDB",
-  ],
-  Tools: ["Git", "GitHub", "Docker", "Microsoft", "AWS"],
-};
+  All: ['HTML', 'CSS', 'JavaScript', 'TypeScript', 'React', 'Angular', 'Vue', 'Tailwind', 'Bootstrap', 'Python', 'Java', 'SpringBoot', 'Django', 'PostgreSQL', 'SQLite', 'MariaDB', 'Git', 'GitHub', 'Docker', 'Microsoft', 'AWS'],
+  Frontend: ['HTML', 'CSS', 'JavaScript', 'TypeScript', 'React', 'Angular', 'Vue', 'Tailwind', 'Bootstrap'],
+  Backend: ['Python', 'Java', 'SpringBoot', 'Django', 'PostgreSQL', 'SQLite', 'MariaDB'],
+  Tools: ['Git', 'GitHub', 'Docker', 'Microsoft', 'AWS'],
+}
 
-const techIcons: { [key: string]: JSX.Element } = {
-  HTML: <FaHtml5 className="text-orange-500" />,
-  CSS: <FaCss3Alt className="text-blue-500" />,
-  JavaScript: <FaJs className="text-yellow-400" />,
-  TypeScript: <SiTypescript className="text-blue-600" />,
-  React: <FaReact className="text-cyan-400" />,
-  Angular: <FaAngular className="text-red-500" />,
-  Vue: <FaVuejs className="text-green-500" />,
-  Tailwind: <SiTailwindcss className="text-sky-400" />,
-  Bootstrap: <FaBootstrap className="text-purple-600" />,
-  Python: <FaPython className="text-yellow-300" />,
-  Java: <FaJava className="text-red-400" />,
-  SpringBoot: <SiSpringboot className="text-green-500" />,
-  Django: <SiDjango className="text-green-800" />,
-  PostgreSQL: <SiPostgresql className="text-blue-500" />,
-  SQLite: <SiSqlite className="text-blue-400" />,
-  MariaDB: <SiMariadb className="text-teal-600" />,
-  Git: <FaGit className="text-orange-500" />,
-  GitHub: <FaGithub className="text-white bg-black rounded-full p-1" />,
-  Docker: <FaDocker className="text-blue-500" />,
-  Microsoft: <FaMicrosoft className="text-blue-700" />,
-  AWS: <FaAws className="text-orange-400" />,
-};
+const techIcons: TechIconMap = {
+  HTML: <FaHtml5 color="#f97316" />,
+  CSS: <FaCss3Alt color="#3b82f6" />,
+  JavaScript: <FaJs color="#facc15" />,
+  TypeScript: <SiTypescript color="#2563eb" />,
+  React: <FaReact color="#22d3ee" />,
+  Angular: <FaAngular color="#ef4444" />,
+  Vue: <FaVuejs color="#22c55e" />,
+  Tailwind: <SiTailwindcss color="#38bdf8" />,
+  Bootstrap: <FaBootstrap color="#9333ea" />,
+  Python: <FaPython color="#fde047" />,
+  Java: <FaJava color="#f87171" />,
+  SpringBoot: <SiSpringboot color="#22c55e" />,
+  Django: <SiDjango color="#166534" />,
+  PostgreSQL: <SiPostgresql color="#3b82f6" />,
+  SQLite: <SiSqlite color="#60a5fa" />,
+  MariaDB: <SiMariadb color="#0f766e" />,
+  Git: <FaGit color="#f97316" />,
+  GitHub: <FaGithub color="#111827" />,
+  Docker: <FaDocker color="#3b82f6" />,
+  Microsoft: <FaMicrosoft color="#1d4ed8" />,
+  AWS: <FaAws color="#fb923c" />,
+}
 
 const Skills = () => {
-  const [active, setActive] = useState<TechCategory>("All");
+  const [active, setActive] = useState<TechCategory>('All')
 
   return (
-    <section
-      id="tech-stack"
-      className="min-h-screen py-20 px-4 text-center"
-    >
-      <h2 className="text-3xl font-bold uppercase mb-10 tracking-wider bg-gradient-to-r from-purple-400 to-fuchsia-400 bg-clip-text text-transparent" style={{ fontFamily: 'var(--font-mono)' }}>
-        Tech Stack
-      </h2>
+    <SkillsView
+      active={active}
+      categories={techCategories}
+      icons={techIcons}
+      onChangeCategory={setActive}
+    />
+  )
+}
 
-      <div className="max-w-6xl mx-auto card p-6">
-        <div className="flex flex-wrap justify-center gap-2 mb-6">
-          {Object.keys(techCategories).map((category) => (
-            <button
-              key={category}
-                className={`px-4 py-2 rounded font-mono text-sm ${
-                active === category
-                  ? "bg-red-600 text-white"
-                  : "btn-inactive text-white hover:bg-opacity-40"
-              } transition`}
-              onClick={() => setActive(category as TechCategory)}
-            >
-              {category}
-            </button>
-          ))}
-        </div>
-
-        <div className="flex flex-wrap justify-center gap-6">
-          {techCategories[active].map((tech) => (
-            <div
-              key={tech}
-              className="w-16 h-16 rounded-full border-2 border-gray-400 flex items-center justify-center text-3xl hover:scale-110 transition-all bg-white shadow-md"
-              title={tech}
-            >
-              {techIcons[tech]}
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-};
-
-export default Skills;
+export default Skills
