@@ -54,7 +54,15 @@ const Projects = () => {
     if (!node) return
 
     const activeButton = node.children[safeActiveIndex] as HTMLElement | undefined
-    activeButton?.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' })
+    if (!activeButton) return
+
+    const targetLeft =
+      activeButton.offsetLeft - node.clientWidth / 2 + activeButton.clientWidth / 2
+
+    node.scrollTo({
+      left: Math.max(0, targetLeft),
+      behavior: 'smooth',
+    })
   }, [safeActiveIndex])
 
   const scrollTabs = (direction: 'left' | 'right') => {
