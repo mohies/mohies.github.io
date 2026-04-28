@@ -1,18 +1,21 @@
 import { useState } from 'react'
-import HeroView from './HeroView'
+import type { SiteText } from '../i18n'
 import ContactModal from './ContactModal'
+import HeroView from './HeroView'
 
-const Hero = () => {
+type HeroProps = {
+  heroText: SiteText['hero']
+  modalText: SiteText['modal']
+}
+
+const Hero = ({ heroText, modalText }: HeroProps) => {
   const [open, setOpen] = useState(false)
   const contactEmail = import.meta.env.VITE_CONTACT_EMAIL || ''
 
   return (
     <>
-      <HeroView
-        contactEmail={contactEmail}
-        onOpenContact={() => setOpen(true)}
-      />
-      <ContactModal isOpen={open} onClose={() => setOpen(false)} />
+      <HeroView contactEmail={contactEmail} heroText={heroText} onOpenContact={() => setOpen(true)} />
+      <ContactModal isOpen={open} modalText={modalText} onClose={() => setOpen(false)} />
     </>
   )
 }

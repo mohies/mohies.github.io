@@ -1,18 +1,23 @@
 import { useState } from 'react'
+import type { SiteText } from '../i18n'
 import ContactView from './ContactView'
 
-const Contact = () => {
+type ContactProps = {
+  contactText: SiteText['contact']
+}
+
+const Contact = ({ contactText }: ContactProps) => {
   const [nombre, setNombre] = useState('')
   const [email, setEmail] = useState('')
   const [mensaje, setMensaje] = useState('')
   const contactEmail = import.meta.env.VITE_CONTACT_EMAIL || ''
 
   const handleMail = () => {
-    const subject = `Mensaje de ${nombre}`
-    const body = `Nombre: ${nombre}%0ACorreo: ${email}%0AMensaje:%0A${mensaje}`
+    const subject = `${contactText.mailSubjectPrefix} ${nombre}`
+    const body = `${contactText.name}: ${nombre}%0A${contactText.email}: ${email}%0A${contactText.message}:%0A${mensaje}`
 
     if (!contactEmail) {
-      alert('Contact email is not configured. Add VITE_CONTACT_EMAIL to your .env file.')
+      alert(contactText.noEmailAlert)
       return
     }
 
@@ -22,6 +27,7 @@ const Contact = () => {
   return (
     <ContactView
       contactEmail={contactEmail}
+      contactText={contactText}
       email={email}
       mensaje={mensaje}
       nombre={nombre}

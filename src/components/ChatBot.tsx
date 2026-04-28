@@ -1,41 +1,52 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { AiOutlineCode, AiOutlineFile, AiOutlineMail, AiOutlineUser } from 'react-icons/ai'
+import type { SiteText } from '../i18n'
 import ChatBotView, { type ChatMessage, type ChatOption } from './ChatBotView'
 
-const options: ChatOption[] = [
-  {
-    id: 'about',
-    label: 'About',
-    icon: <AiOutlineUser />,
-    reply: 'I am Mohcen Benizza, a web developer with IT support experience. I focus on responsive UI, frontend quality and practical delivery.',
-  },
-  {
-    id: 'skills',
-    label: 'Skills',
-    icon: <AiOutlineCode />,
-    reply: 'Main stack: React, Angular, Vue, TypeScript, TailwindCSS, Bootstrap, Django, Spring Boot, PostgreSQL, Docker, AWS and GitHub.',
-  },
-  {
-    id: 'projects',
-    label: 'Projects',
-    icon: <AiOutlineFile />,
-    reply: 'Featured projects include Eventia, RAWG Explorer, Deezerfy and Session Manager. Check the Projects section for the details and repositories.',
-  },
-  {
-    id: 'contact',
-    label: 'Contact',
-    icon: <AiOutlineMail />,
-    reply: 'Use the contact form, LinkedIn or GitHub links in the Contact section. I am open to collaborations and product work.',
-  },
-]
+type ChatBotProps = {
+  chatbotText: SiteText['chatbot']
+}
 
-const ChatBot = () => {
+const ChatBot = ({ chatbotText }: ChatBotProps) => {
+  const options: ChatOption[] = useMemo(
+    () => [
+      {
+        id: 'about',
+        label: chatbotText.options.about.label,
+        icon: <AiOutlineUser />,
+        reply: chatbotText.options.about.reply,
+      },
+      {
+        id: 'skills',
+        label: chatbotText.options.skills.label,
+        icon: <AiOutlineCode />,
+        reply: chatbotText.options.skills.reply,
+      },
+      {
+        id: 'projects',
+        label: chatbotText.options.projects.label,
+        icon: <AiOutlineFile />,
+        reply: chatbotText.options.projects.reply,
+      },
+      {
+        id: 'contact',
+        label: chatbotText.options.contact.label,
+        icon: <AiOutlineMail />,
+        reply: chatbotText.options.contact.reply,
+      },
+    ],
+    [chatbotText.options],
+  )
+
   const [open, setOpen] = useState(false)
-  const [messages, setMessages] = useState<ChatMessage[]>([
-    { from: 'bot', text: 'Hi. I am Mohcens assistant. What do you want to know?' },
-  ])
+  const [messages, setMessages] = useState<ChatMessage[]>([{ from: 'bot', text: chatbotText.initialMessage }])
   const [typing, setTyping] = useState(false)
   const messagesEndRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    setMessages([{ from: 'bot', text: chatbotText.initialMessage }])
+    setTyping(false)
+  }, [chatbotText.initialMessage])
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
@@ -65,6 +76,7 @@ const ChatBot = () => {
 
   return (
     <ChatBotView
+      chatbotText={chatbotText}
       messages={messages}
       messagesEndRef={messagesEndRef}
       open={open}

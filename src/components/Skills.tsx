@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import {
   FaAngular,
   FaAws,
@@ -15,11 +15,48 @@ import {
   FaReact,
   FaVuejs,
 } from 'react-icons/fa'
-import { SiDjango, SiMariadb, SiOracle, SiPostgresql, SiSpringboot, SiSqlite, SiTailwindcss, SiTypescript } from 'react-icons/si'
+import {
+  SiDjango,
+  SiMariadb,
+  SiOracle,
+  SiPostgresql,
+  SiSpringboot,
+  SiSqlite,
+  SiTailwindcss,
+  SiTypescript,
+} from 'react-icons/si'
+import type { SiteText } from '../i18n'
 import SkillsView, { type TechCategory, type TechIconMap } from './SkillsView'
 
+type SkillsProps = {
+  skillsText: SiteText['skills']
+}
+
 const techCategories: Record<TechCategory, string[]> = {
-  All: ['HTML', 'CSS', 'JavaScript', 'TypeScript', 'React', 'Angular', 'Vue', 'Tailwind', 'Bootstrap', 'Python', 'Java', 'SpringBoot', 'Django', 'PostgreSQL', 'SQLite', 'MariaDB', 'Oracle', 'Git', 'GitHub', 'Docker', 'Microsoft', 'AWS'],
+  All: [
+    'HTML',
+    'CSS',
+    'JavaScript',
+    'TypeScript',
+    'React',
+    'Angular',
+    'Vue',
+    'Tailwind',
+    'Bootstrap',
+    'Python',
+    'Java',
+    'SpringBoot',
+    'Django',
+    'PostgreSQL',
+    'SQLite',
+    'MariaDB',
+    'Oracle',
+    'Git',
+    'GitHub',
+    'Docker',
+    'Microsoft',
+    'AWS',
+  ],
   Frontend: ['HTML', 'CSS', 'JavaScript', 'TypeScript', 'React', 'Angular', 'Vue', 'Tailwind', 'Bootstrap'],
   Backend: ['Python', 'Java', 'SpringBoot', 'Django', 'PostgreSQL', 'SQLite', 'MariaDB', 'Oracle'],
   Tools: ['Git', 'GitHub', 'Docker', 'Microsoft', 'AWS'],
@@ -50,14 +87,26 @@ const techIcons: TechIconMap = {
   AWS: <FaAws color="#fb923c" />,
 }
 
-const Skills = () => {
+const Skills = ({ skillsText }: SkillsProps) => {
   const [active, setActive] = useState<TechCategory>('All')
+
+  const categoryLabels = useMemo(
+    () => ({
+      All: skillsText.filters.all,
+      Frontend: skillsText.filters.frontend,
+      Backend: skillsText.filters.backend,
+      Tools: skillsText.filters.tools,
+    }),
+    [skillsText.filters],
+  )
 
   return (
     <SkillsView
       active={active}
       categories={techCategories}
+      categoryLabels={categoryLabels}
       icons={techIcons}
+      skillsText={skillsText}
       onChangeCategory={setActive}
     />
   )

@@ -1,47 +1,38 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { FaAngular, FaBootstrap, FaCss3Alt, FaDatabase, FaHtml5, FaJs } from 'react-icons/fa'
 import { SiDjango, SiTypescript, SiVuedotjs } from 'react-icons/si'
+import type { SiteText } from '../i18n'
 import ProjectsView, { type ProjectItem } from './ProjectsView'
 
-const projects: ProjectItem[] = [
-  {
-    id: 'eventia',
-    title: 'Eventia - Event Management Platform',
-    description:
-      'Fullstack web app for event management. Features user authentication, event listings, email notifications, and a private admin panel. Built as a capstone final project.',
-    techs: [<SiDjango />, <FaHtml5 />, <FaCss3Alt />, <FaAngular />, <SiTypescript />, <FaBootstrap />],
-    github: 'https://github.com/mohies/ProyectoIntegrado',
-  },
-  {
-    id: 'angular-juego',
-    title: 'RAWG Explorer - Angular Game Browser',
-    description:
-      'A web app using the RAWG API built with Angular. Allows filtering games by platform, signing in, and browsing game details. Responsive UI with Bootstrap.',
-    techs: [<FaAngular />, <SiTypescript />, <FaCss3Alt />, <FaBootstrap />],
-    github: 'https://github.com/mohies/AngularJuego',
-  },
-  {
-    id: 'vue-musica',
-    title: 'Deezerfy - Music Streaming with Vue',
-    description:
-      'Music app built with Vue.js and Deezer API integration. Users can search for songs, listen to previews, and explore albums. Styled with CSS and Vue Router.',
-    techs: [<SiVuedotjs />, <FaCss3Alt />],
-    github: 'https://github.com/mohies/vue',
-  },
-  {
-    id: 'sesiones',
-    title: 'Session Manager - Video Game Tournament Platform',
-    description:
-      'Platform for managing video game tournaments with Django backend and custom frontend. Features include player registration, bracket management, match results, and secure session control.',
-    techs: [<SiDjango />, <FaHtml5 />, <FaCss3Alt />, <FaJs />, <FaDatabase />],
-    github: 'https://github.com/mohies/Cliente',
-    extraRepo: 'https://github.com/mohies/Sesiones',
-  },
-]
+type ProjectsProps = {
+  projectsText: SiteText['projects']
+}
 
-const Projects = () => {
-  const [activeTab, setActiveTab] = useState(projects[0].id)
+const projectIcons = {
+  eventia: [<SiDjango />, <FaHtml5 />, <FaCss3Alt />, <FaAngular />, <SiTypescript />, <FaBootstrap />],
+  'angular-juego': [<FaAngular />, <SiTypescript />, <FaCss3Alt />, <FaBootstrap />],
+  'vue-musica': [<SiVuedotjs />, <FaCss3Alt />],
+  sesiones: [<SiDjango />, <FaHtml5 />, <FaCss3Alt />, <FaJs />, <FaDatabase />],
+}
+
+const Projects = ({ projectsText }: ProjectsProps) => {
+  const projects = useMemo<ProjectItem[]>(
+    () =>
+      projectsText.items.map((project) => ({
+        ...project,
+        techs: projectIcons[project.id as keyof typeof projectIcons] ?? [],
+      })),
+    [projectsText.items],
+  )
+
+  const [activeTab, setActiveTab] = useState(projects[0]?.id ?? '')
   const tabsRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (!projects.some((project) => project.id === activeTab)) {
+      setActiveTab(projects[0]?.id ?? '')
+    }
+  }, [projects, activeTab])
 
   const activeIndex = projects.findIndex((project) => project.id === activeTab)
   const safeActiveIndex = activeIndex >= 0 ? activeIndex : 0
@@ -56,8 +47,7 @@ const Projects = () => {
     const activeButton = node.children[safeActiveIndex] as HTMLElement | undefined
     if (!activeButton) return
 
-    const targetLeft =
-      activeButton.offsetLeft - node.clientWidth / 2 + activeButton.clientWidth / 2
+    const targetLeft = activeButton.offsetLeft - node.clientWidth / 2 + activeButton.clientWidth / 2
 
     node.scrollTo({
       left: Math.max(0, targetLeft),
@@ -66,13 +56,14 @@ const Projects = () => {
   }, [safeActiveIndex])
 
   const scrollTabs = (direction: 'left' | 'right') => {
-    const node = tabsRef.current
     const nextIndex = direction === 'left' ? safeActiveIndex - 1 : safeActiveIndex + 1
     const nextProject = projects[nextIndex]
-    if (!node || !nextProject) return
+    if (!nextProject) return
 
     setActiveTab(nextProject.id)
   }
+
+  if (!activeProject) return null
 
   return (
     <ProjectsView
@@ -81,6 +72,7 @@ const Projects = () => {
       canScrollLeft={canScrollLeft}
       canScrollRight={canScrollRight}
       projects={projects}
+      projectsText={projectsText}
       tabsRef={tabsRef}
       onChangeProject={setActiveTab}
       onScrollTabs={scrollTabs}

@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react'
 import { HiArrowRight } from 'react-icons/hi'
+import type { SiteText } from '../i18n'
 import './About.scss'
 
 export type AboutSkill = {
@@ -16,13 +17,14 @@ export type AboutFeature = {
 }
 
 type AboutViewProps = {
+  aboutText: SiteText['about']
   features: AboutFeature[]
   skills: AboutSkill[]
   terminalLines: string[]
   terminalSource: string[]
 }
 
-const AboutView = ({ features, skills, terminalLines, terminalSource }: AboutViewProps) => {
+const AboutView = ({ aboutText, features, skills, terminalLines, terminalSource }: AboutViewProps) => {
   const showCursorLine1 = terminalLines[0].length < terminalSource[0].length
   const showCursorLine2 =
     terminalLines[0].length === terminalSource[0].length &&
@@ -35,12 +37,9 @@ const AboutView = ({ features, skills, terminalLines, terminalSource }: AboutVie
     <section id="about" className="about-section">
       <div className="section-shell">
         <div className="about-heading">
-          <span className="section-kicker">About</span>
-          <h2 className="section-title">A builder who cares about both polish and reliability.</h2>
-          <p className="section-copy">
-            My background mixes frontend development, full stack delivery and IT support. That
-            combination helps me build interfaces that look clean and also behave well in real use.
-          </p>
+          <span className="section-kicker">{aboutText.kicker}</span>
+          <h2 className="section-title">{aboutText.title}</h2>
+          <p className="section-copy">{aboutText.copy}</p>
         </div>
 
         <div className="card surface-grid about-card">
@@ -49,9 +48,9 @@ const AboutView = ({ features, skills, terminalLines, terminalSource }: AboutVie
               <div className="about-profile__header">
                 <div className="about-profile__badge">MB</div>
                 <div>
-                  <div className="about-profile__kicker">Profile</div>
+                  <div className="about-profile__kicker">{aboutText.profileKicker}</div>
                   <h3 className="about-profile__title">Mohcen Benizza</h3>
-                  <div className="about-profile__subtitle">Web Developer and IT Support</div>
+                  <div className="about-profile__subtitle">{aboutText.profileSubtitle}</div>
                 </div>
               </div>
 
@@ -60,7 +59,7 @@ const AboutView = ({ features, skills, terminalLines, terminalSource }: AboutVie
                   <span className="about-terminal__dot about-terminal__dot--red" />
                   <span className="about-terminal__dot about-terminal__dot--yellow" />
                   <span className="about-terminal__dot about-terminal__dot--green" />
-                  <span className="about-terminal__label">terminal</span>
+                  <span className="about-terminal__label">{aboutText.terminalLabel}</span>
                 </div>
 
                 <div className="about-terminal__body">
@@ -91,17 +90,17 @@ const AboutView = ({ features, skills, terminalLines, terminalSource }: AboutVie
               <div className="about-stats">
                 <div className="about-stat">
                   <div className="about-stat__value about-stat__value--green">1+</div>
-                  <div className="about-stat__label">Years Exp</div>
+                  <div className="about-stat__label">{aboutText.stats.years}</div>
                 </div>
                 <div className="about-stats__divider" />
                 <div className="about-stat">
                   <div className="about-stat__value about-stat__value--blue">4</div>
-                  <div className="about-stat__label">Projects</div>
+                  <div className="about-stat__label">{aboutText.stats.projects}</div>
                 </div>
                 <div className="about-stats__divider" />
                 <div className="about-stat">
                   <div className="about-stat__value about-stat__value--orange">24/7</div>
-                  <div className="about-stat__label">Curiosity</div>
+                  <div className="about-stat__label">{aboutText.stats.curiosity}</div>
                 </div>
               </div>
             </div>
@@ -119,10 +118,10 @@ const AboutView = ({ features, skills, terminalLines, terminalSource }: AboutVie
 
               <div className="about-cta">
                 <p className="about-cta__text">
-                  <span className="about-cta__accent">Lets build</span> something clean, fast and useful.
+                  <span className="about-cta__accent">{aboutText.cta.accent}</span> {aboutText.cta.text}
                 </p>
                 <a href="#contact" className="about-cta__button">
-                  Get in touch
+                  {aboutText.cta.button}
                   <HiArrowRight className="about-cta__arrow" />
                 </a>
               </div>

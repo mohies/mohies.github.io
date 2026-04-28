@@ -1,8 +1,10 @@
 import { FaEnvelope, FaGithub, FaLinkedin } from 'react-icons/fa'
+import type { SiteText } from '../i18n'
 import './Contact.scss'
 
 type ContactViewProps = {
   contactEmail: string
+  contactText: SiteText['contact']
   email: string
   mensaje: string
   nombre: string
@@ -14,6 +16,7 @@ type ContactViewProps = {
 
 const ContactView = ({
   contactEmail,
+  contactText,
   email,
   mensaje,
   nombre,
@@ -26,20 +29,15 @@ const ContactView = ({
     <section id="contact" className="contact-section">
       <div className="section-shell">
         <div className="contact-heading">
-          <span className="section-kicker">Contact</span>
-          <h2 className="section-title">If the work fits, lets talk.</h2>
-          <p className="section-copy">
-            The form sits inside the same visual system as the rest of the page, with better spacing
-            and mobile readability.
-          </p>
+          <span className="section-kicker">{contactText.kicker}</span>
+          <h2 className="section-title">{contactText.title}</h2>
+          <p className="section-copy">{contactText.copy}</p>
         </div>
 
         <div className="contact-layout">
           <div className="card contact-panel">
-            <h3 className="contact-panel__title">Direct channels</h3>
-            <p className="contact-panel__copy">
-              For freelance work, collaborations or a product role, you can use the form or reach me through the links below.
-            </p>
+            <h3 className="contact-panel__title">{contactText.panelTitle}</h3>
+            <p className="contact-panel__copy">{contactText.panelCopy}</p>
 
             <div className="contact-panel__links">
               <a href="https://linkedin.com/in/mohcenbenizza" target="_blank" rel="noopener noreferrer" className="contact-pill">
@@ -66,10 +64,33 @@ const ContactView = ({
               onSubmit()
             }}
           >
-            <input type="text" placeholder="Name" value={nombre} onChange={(event) => onChangeNombre(event.target.value)} required className="contact-input" />
-            <input type="email" placeholder="Email" value={email} onChange={(event) => onChangeEmail(event.target.value)} required className="contact-input" />
-            <textarea placeholder="Message" rows={6} value={mensaje} onChange={(event) => onChangeMensaje(event.target.value)} required className="contact-input contact-input--textarea" />
-            <button type="submit" className="contact-submit">Send Message</button>
+            <input
+              type="text"
+              placeholder={contactText.name}
+              value={nombre}
+              onChange={(event) => onChangeNombre(event.target.value)}
+              required
+              className="contact-input"
+            />
+            <input
+              type="email"
+              placeholder={contactText.email}
+              value={email}
+              onChange={(event) => onChangeEmail(event.target.value)}
+              required
+              className="contact-input"
+            />
+            <textarea
+              placeholder={contactText.message}
+              rows={6}
+              value={mensaje}
+              onChange={(event) => onChangeMensaje(event.target.value)}
+              required
+              className="contact-input contact-input--textarea"
+            />
+            <button type="submit" className="contact-submit">
+              {contactText.send}
+            </button>
           </form>
         </div>
       </div>

@@ -1,0 +1,234 @@
+.curriculum-section {
+  padding: 6rem 0 4rem;
+}
+
+.curriculum-heading {
+  max-width: 640px;
+  margin-bottom: 2.5rem;
+}
+
+.curriculum-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.1fr);
+  gap: 2rem;
+}
+
+.curriculum-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.curriculum-profile {
+  padding: 1.8rem;
+}
+
+.curriculum-profile__header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.curriculum-profile__badge {
+  width: 3.1rem;
+  height: 3.1rem;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, rgba(94, 234, 212, 0.3), rgba(34, 211, 238, 0.12));
+  border: 1px solid var(--line-soft);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.curriculum-profile__name {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.curriculum-profile__role {
+  margin: 0.2rem 0 0;
+  font-size: 0.85rem;
+  font-family: var(--font-mono);
+  color: var(--muted);
+}
+
+.curriculum-profile__summary {
+  margin: 1.1rem 0 1.5rem;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.curriculum-panel {
+  padding: 1.2rem 1.4rem;
+}
+
+.curriculum-panel__header {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #5eead4;
+  margin-bottom: 0.9rem;
+}
+
+.curriculum-panel__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.5rem;
+  color: var(--text);
+}
+
+.curriculum-contact {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.curriculum-contact__item {
+  display: flex;
+  gap: 0.65rem;
+  align-items: flex-start;
+}
+
+.curriculum-contact__icon {
+  margin-top: 0.2rem;
+  color: #38bdf8;
+}
+
+.curriculum-contact__label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-family: var(--font-mono);
+  color: var(--muted);
+}
+
+.curriculum-contact__value {
+  font-size: 0.92rem;
+  color: var(--text);
+}
+
+.curriculum-stack {
+  padding: 1.5rem;
+}
+
+.curriculum-stack__group {
+  margin-bottom: 1rem;
+}
+
+.curriculum-stack__group:last-child {
+  margin-bottom: 0;
+}
+
+.curriculum-stack__label {
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-family: var(--font-mono);
+  color: var(--muted);
+}
+
+.curriculum-stack__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.55rem;
+}
+
+.curriculum-stack__tag {
+  padding: 0.35rem 0.65rem;
+  border-radius: 999px;
+  border: 1px solid var(--line-soft);
+  font-size: 0.78rem;
+  color: var(--text);
+  background: rgba(15, 23, 42, 0.3);
+}
+
+.curriculum-timeline {
+  padding: 1.5rem 1.6rem;
+}
+
+.curriculum-timeline__list {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.curriculum-item {
+  position: relative;
+  padding-left: 1.5rem;
+  border-left: 1px solid var(--line-soft);
+}
+
+.curriculum-item::before {
+  content: '';
+  position: absolute;
+  left: -0.42rem;
+  top: 0.4rem;
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 999px;
+  background: rgba(94, 234, 212, 0.7);
+  border: 2px solid rgba(9, 15, 28, 0.9);
+}
+
+.curriculum-item__meta {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  font-weight: 600;
+}
+
+.curriculum-item__period {
+  font-size: 0.82rem;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.curriculum-item__company {
+  margin-top: 0.25rem;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.curriculum-item__bullets {
+  margin: 0.65rem 0 0;
+  padding-left: 1rem;
+  color: var(--text);
+  display: grid;
+  gap: 0.35rem;
+}
+
+.curriculum-item__note {
+  margin-top: 0.4rem;
+  color: #86efac;
+  font-size: 0.85rem;
+  font-family: var(--font-mono);
+}
+
+@media (max-width: 1024px) {
+  .curriculum-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .curriculum-section {
+    padding: 5rem 0 3rem;
+  }
+
+  .curriculum-profile {
+    padding: 1.4rem;
+  }
+
+  .curriculum-timeline,
+  .curriculum-stack {
+    padding: 1.2rem;
+  }
+}

@@ -1,10 +1,15 @@
 import { useState } from 'react'
 import emailjs from 'emailjs-com'
+import type { SiteText } from '../i18n'
 import ContactModalView from './ContactModalView'
 
-type Props = { isOpen: boolean; onClose: () => void }
+type Props = {
+  isOpen: boolean
+  modalText: SiteText['modal']
+  onClose: () => void
+}
 
-const ContactModal = ({ isOpen, onClose }: Props) => {
+const ContactModal = ({ isOpen, modalText, onClose }: Props) => {
   const [nombre, setNombre] = useState('')
   const [email, setEmail] = useState('')
   const [mensaje, setMensaje] = useState('')
@@ -29,9 +34,9 @@ const ContactModal = ({ isOpen, onClose }: Props) => {
       const contactEmail = import.meta.env.VITE_CONTACT_EMAIL || ''
 
       if (contactEmail) {
-        window.location.href = `mailto:${contactEmail}?subject=${encodeURIComponent(`Mensaje de ${nombre}`)}&body=${encodeURIComponent(mensaje)}`
+        window.location.href = `mailto:${contactEmail}?subject=${encodeURIComponent(`${modalText.mailSubjectPrefix} ${nombre}`)}&body=${encodeURIComponent(mensaje)}`
       } else {
-        alert('Contact email is not configured. Add VITE_CONTACT_EMAIL to your .env file.')
+        alert(modalText.noEmailAlert)
       }
 
       setLoading(false)
@@ -41,14 +46,14 @@ const ContactModal = ({ isOpen, onClose }: Props) => {
 
     try {
       await emailjs.send(serviceID, templateID, templateParams, publicKey)
-      alert('Message sent. Thanks.')
+      alert(modalText.sentAlert)
       setNombre('')
       setEmail('')
       setMensaje('')
       onClose()
     } catch (error) {
       console.error(error)
-      alert('Message could not be sent. Check your EmailJS configuration and try again.')
+      alert(modalText.failedAlert)
     } finally {
       setLoading(false)
     }
@@ -60,6 +65,7 @@ const ContactModal = ({ isOpen, onClose }: Props) => {
       isOpen={isOpen}
       loading={loading}
       mensaje={mensaje}
+      modalText={modalText}
       nombre={nombre}
       onChangeEmail={setEmail}
       onChangeMensaje={setMensaje}

@@ -1,5 +1,6 @@
 import type { ReactNode, RefObject } from 'react'
 import { FiMessageCircle, FiX } from 'react-icons/fi'
+import type { SiteText } from '../i18n'
 import './ChatBot.scss'
 
 export type ChatOption = {
@@ -15,6 +16,7 @@ export type ChatMessage = {
 }
 
 type ChatBotViewProps = {
+  chatbotText: SiteText['chatbot']
   messages: ChatMessage[]
   messagesEndRef: RefObject<HTMLDivElement | null>
   open: boolean
@@ -24,7 +26,16 @@ type ChatBotViewProps = {
   onToggle: () => void
 }
 
-const ChatBotView = ({ messages, messagesEndRef, open, options, typing, onOptionClick, onToggle }: ChatBotViewProps) => {
+const ChatBotView = ({
+  chatbotText,
+  messages,
+  messagesEndRef,
+  open,
+  options,
+  typing,
+  onOptionClick,
+  onToggle,
+}: ChatBotViewProps) => {
   return (
     <div className="chatbot">
       {open ? (
@@ -32,20 +43,25 @@ const ChatBotView = ({ messages, messagesEndRef, open, options, typing, onOption
           <div className="chatbot__header">
             <div className="chatbot__avatar">MB</div>
             <div>
-              <div className="chatbot__title">Virtual Assistant</div>
+              <div className="chatbot__title">{chatbotText.title}</div>
               <div className="chatbot__status">
                 <span className="chatbot__status-dot" />
-                <span>Online | Demo mode</span>
+                <span>{chatbotText.status}</span>
               </div>
             </div>
-            <button type="button" onClick={onToggle} className="chatbot__close" aria-label="Close">
+            <button type="button" onClick={onToggle} className="chatbot__close" aria-label={chatbotText.close}>
               <FiX />
             </button>
           </div>
 
           <div className="chatbot__messages">
             {messages.map((message, index) => (
-              <div key={index} className={message.from === 'bot' ? 'chatbot__bubble chatbot__bubble--bot' : 'chatbot__bubble chatbot__bubble--user'}>
+              <div
+                key={index}
+                className={
+                  message.from === 'bot' ? 'chatbot__bubble chatbot__bubble--bot' : 'chatbot__bubble chatbot__bubble--user'
+                }
+              >
                 {message.text}
               </div>
             ))}
@@ -72,7 +88,7 @@ const ChatBotView = ({ messages, messagesEndRef, open, options, typing, onOption
         </div>
       ) : null}
 
-      <button type="button" onClick={onToggle} className="chatbot__toggle" aria-label={open ? 'Cerrar asistente' : 'Abrir asistente'}>
+      <button type="button" onClick={onToggle} className="chatbot__toggle" aria-label={open ? chatbotText.close : chatbotText.open}>
         {open ? <FiX /> : <FiMessageCircle />}
       </button>
     </div>

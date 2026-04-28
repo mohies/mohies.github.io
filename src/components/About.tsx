@@ -1,64 +1,65 @@
 import { useEffect, useState } from 'react'
 import { FaCode, FaHeadset, FaLaptopCode, FaRocket, FaServer, FaTools } from 'react-icons/fa'
+import type { SiteText } from '../i18n'
 import AboutView, { type AboutFeature, type AboutSkill } from './AboutView'
 
-const TERMINAL_LINES = [
-  'mohcen@dev:~$ whoami',
-  'Frontend developer and IT support specialist',
-  'stack: React | Angular | Vue | Django | TypeScript',
-]
+type AboutProps = {
+  aboutText: SiteText['about']
+}
 
-const skills: AboutSkill[] = [
-  {
-    icon: <FaCode />,
-    label: 'Frontend',
-    accentClass: 'about-skill-icon--cyan',
-  },
-  {
-    icon: <FaServer />,
-    label: 'Backend',
-    accentClass: 'about-skill-icon--green',
-  },
-  {
-    icon: <FaTools />,
-    label: 'DevOps',
-    accentClass: 'about-skill-icon--orange',
-  },
-]
+const About = ({ aboutText }: AboutProps) => {
+  const skills: AboutSkill[] = [
+    {
+      icon: <FaCode />,
+      label: aboutText.skills.frontend,
+      accentClass: 'about-skill-icon--cyan',
+    },
+    {
+      icon: <FaServer />,
+      label: aboutText.skills.backend,
+      accentClass: 'about-skill-icon--green',
+    },
+    {
+      icon: <FaTools />,
+      label: aboutText.skills.devops,
+      accentClass: 'about-skill-icon--orange',
+    },
+  ]
 
-const features: AboutFeature[] = [
-  {
-    icon: <FaLaptopCode />,
-    iconClass: 'about-feature-icon--cyan',
-    title: 'Product focused',
-    description: 'Fast, accessible interfaces with attention to spacing, hierarchy and flow.',
-  },
-  {
-    icon: <FaRocket />,
-    iconClass: 'about-feature-icon--orange',
-    title: 'Full stack range',
-    description: 'React, Angular, Vue, Django, Spring Boot and practical delivery across the stack.',
-  },
-  {
-    icon: <FaHeadset />,
-    iconClass: 'about-feature-icon--green',
-    title: 'IT support',
-    description: 'Troubleshooting, maintenance and user support with a calm, hands-on approach.',
-  },
-  {
-    icon: <FaTools />,
-    iconClass: 'about-feature-icon--blue',
-    title: 'Execution',
-    description: 'I care about clean handoff, consistent UI and shipping work that holds up.',
-  },
-]
+  const features: AboutFeature[] = [
+    {
+      icon: <FaLaptopCode />,
+      iconClass: 'about-feature-icon--cyan',
+      title: aboutText.features.product.title,
+      description: aboutText.features.product.description,
+    },
+    {
+      icon: <FaRocket />,
+      iconClass: 'about-feature-icon--orange',
+      title: aboutText.features.fullstack.title,
+      description: aboutText.features.fullstack.description,
+    },
+    {
+      icon: <FaHeadset />,
+      iconClass: 'about-feature-icon--green',
+      title: aboutText.features.support.title,
+      description: aboutText.features.support.description,
+    },
+    {
+      icon: <FaTools />,
+      iconClass: 'about-feature-icon--blue',
+      title: aboutText.features.execution.title,
+      description: aboutText.features.execution.description,
+    },
+  ]
 
-const About = () => {
   const [visibleLines, setVisibleLines] = useState(['', '', ''])
 
   useEffect(() => {
-    let timeoutId: number
+    let timeoutId = 0
     let cancelled = false
+
+    setVisibleLines(['', '', ''])
 
     const sleep = (ms: number) =>
       new Promise<void>((resolve) => {
@@ -95,17 +96,17 @@ const About = () => {
 
     const runLoop = async () => {
       while (!cancelled) {
-        await typeLine(0, TERMINAL_LINES[0])
+        await typeLine(0, aboutText.terminalLines[0])
         await sleep(260)
-        await typeLine(1, TERMINAL_LINES[1])
+        await typeLine(1, aboutText.terminalLines[1])
         await sleep(260)
-        await typeLine(2, TERMINAL_LINES[2])
+        await typeLine(2, aboutText.terminalLines[2])
         await sleep(1800)
-        await deleteLine(2, TERMINAL_LINES[2])
+        await deleteLine(2, aboutText.terminalLines[2])
         await sleep(120)
-        await deleteLine(1, TERMINAL_LINES[1])
+        await deleteLine(1, aboutText.terminalLines[1])
         await sleep(120)
-        await deleteLine(0, TERMINAL_LINES[0])
+        await deleteLine(0, aboutText.terminalLines[0])
         await sleep(700)
       }
     }
@@ -116,9 +117,17 @@ const About = () => {
       cancelled = true
       window.clearTimeout(timeoutId)
     }
-  }, [])
+  }, [aboutText.terminalLines])
 
-  return <AboutView features={features} skills={skills} terminalLines={visibleLines} terminalSource={TERMINAL_LINES} />
+  return (
+    <AboutView
+      aboutText={aboutText}
+      features={features}
+      skills={skills}
+      terminalLines={visibleLines}
+      terminalSource={aboutText.terminalLines}
+    />
+  )
 }
 
 export default About

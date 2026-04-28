@@ -1,9 +1,14 @@
 import { useState } from 'react'
+import type { Language, SiteText } from '../i18n'
 import NavbarView from './NavbarView'
 
-const navItems = ['Home', 'About', 'Tech Stack', 'Projects', 'Contact']
+type NavbarProps = {
+  language: Language
+  navText: SiteText['nav']
+  onLanguageChange: (language: Language) => void
+}
 
-const Navbar = () => {
+const Navbar = ({ language, navText, onLanguageChange }: NavbarProps) => {
   const [isOpen, setIsOpen] = useState(false)
 
   const scrollTo = (id: string) => {
@@ -17,9 +22,11 @@ const Navbar = () => {
   return (
     <NavbarView
       isOpen={isOpen}
-      navItems={navItems}
+      language={language}
+      navText={navText}
       onHomeClick={() => scrollTo('home')}
-      onItemClick={(item) => scrollTo(item.toLowerCase().replace(' ', '-'))}
+      onItemClick={scrollTo}
+      onLanguageChange={onLanguageChange}
       onToggleMenu={() => setIsOpen((value) => !value)}
     />
   )
