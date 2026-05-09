@@ -216,12 +216,12 @@ export const siteText: Record<Language, SiteText> = {
       ],
     },
     hero: {
-      pill: 'Disponible para frontend, full stack o soporte IT',
-      title: 'Desarrollador Web Junior / Full Stack',
-      highlight: 'Frontend + Soporte IT',
+      pill: 'Frontend, full stack y soporte IT',
+      title: 'Desarrollador Web',
+      highlight: 'Full Stack + Soporte IT',
       subtitle: 'React, TypeScript, Angular, Django | UI responsive | APIs REST',
       copy:
-        'Construyo interfaces responsive e integro APIs REST para productos reales. Busco un puesto junior en desarrollo web o soporte IT.',
+        'Construyo aplicaciones web modernas, rápidas y responsive con React, TypeScript, Angular, Django y APIs REST. Experiencia en soporte IT.',
       startProject: 'Hablemos',
       viewWork: 'Ver proyectos',
       email: 'Correo',
@@ -522,12 +522,12 @@ export const siteText: Record<Language, SiteText> = {
       ],
     },
     hero: {
-      pill: 'Open to frontend, full stack or IT support roles',
-      title: 'Junior Web Developer / Full Stack',
-      highlight: 'Frontend + IT Support',
+      pill: 'Frontend, full stack and IT support',
+      title: 'Web Developer',
+      highlight: 'Full Stack + IT Support',
       subtitle: 'React, TypeScript, Angular, Django | Responsive UI | REST APIs',
       copy:
-        'I build responsive interfaces and integrate REST APIs for real products. Open to junior web development or IT support roles.',
+        'I build modern, fast and responsive web apps with React, TypeScript, Angular, Django and REST APIs, with IT support experience.',
       startProject: 'Lets talk',
       viewWork: 'View work',
       email: 'Email',
