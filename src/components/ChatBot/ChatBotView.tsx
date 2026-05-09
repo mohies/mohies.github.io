@@ -1,6 +1,6 @@
 import type { ReactNode, RefObject } from 'react'
 import { FiMessageCircle, FiX } from 'react-icons/fi'
-import type { SiteText } from '../i18n'
+import type { SiteText } from '../../i18n'
 import './ChatBot.scss'
 
 export type ChatOption = {

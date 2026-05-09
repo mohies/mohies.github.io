@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import type { SiteText } from '../i18n'
-import ContactModal from './ContactModal'
+import type { SiteText } from '../../i18n'
+import ContactModal from '../ContactModal/ContactModal'
 import HeroView from './HeroView'
 
 type HeroProps = {

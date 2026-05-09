@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { AiOutlineCode, AiOutlineFile, AiOutlineMail, AiOutlineUser } from 'react-icons/ai'
-import type { SiteText } from '../i18n'
+import type { SiteText } from '../../i18n'
 import ChatBotView, { type ChatMessage, type ChatOption } from './ChatBotView'
 
 type ChatBotProps = {

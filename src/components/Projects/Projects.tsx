@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { FaAngular, FaBootstrap, FaCss3Alt, FaDatabase, FaHtml5, FaJs } from 'react-icons/fa'
 import { SiDjango, SiTypescript, SiVuedotjs } from 'react-icons/si'
-import type { SiteText } from '../i18n'
+import type { SiteText } from '../../i18n'
 import ProjectsView, { type ProjectItem } from './ProjectsView'
 
 type ProjectsProps = {

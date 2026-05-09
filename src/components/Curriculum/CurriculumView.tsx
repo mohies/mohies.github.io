@@ -8,7 +8,7 @@ import {
   FaPhoneAlt,
   FaLayerGroup,
 } from 'react-icons/fa'
-import type { SiteText } from '../i18n'
+import type { SiteText } from '../../i18n'
 import './Curriculum.scss'
 
 type CurriculumViewProps = {

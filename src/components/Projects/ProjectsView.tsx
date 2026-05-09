@@ -3,7 +3,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { FaGithub, FaTools } from 'react-icons/fa'
 import { HiChevronLeft, HiChevronRight } from 'react-icons/hi'
 import { HiArrowTopRightOnSquare } from 'react-icons/hi2'
-import type { SiteText } from '../i18n'
+import type { SiteText } from '../../i18n'
 import './Projects.scss'
 
 export type ProjectItem = {
@@ -13,6 +13,8 @@ export type ProjectItem = {
   techs: ReactNode[]
   github: string
   extraRepo?: string
+  demo?: string
+  previewImage?: string
 }
 
 type ProjectsViewProps = {
@@ -38,6 +40,8 @@ const ProjectsView = ({
   onChangeProject,
   onScrollTabs,
 }: ProjectsViewProps) => {
+  const hasDemo = Boolean(activeProject.demo)
+
   return (
     <section id="projects" className="projects-section">
       <div className="section-shell">
@@ -104,19 +108,39 @@ const ProjectsView = ({
                 <div className="projects-layout">
                   <div className="projects-preview">
                     <div className="surface-grid projects-preview__surface">
-                      <div>
-                        <div className="projects-preview__icon">{activeProject.techs[0]}</div>
-                        <div className="projects-preview__label">{projectsText.previewLabel}</div>
-                        <p className="projects-preview__copy">{projectsText.previewCopy}</p>
-                      </div>
+                      {activeProject.previewImage ? (
+                        <img
+                          src={activeProject.previewImage}
+                          alt={`${activeProject.title} ${projectsText.previewLabel}`}
+                          className="projects-preview__image"
+                          loading="lazy"
+                        />
+                      ) : (
+                        <div>
+                          <div className="projects-preview__icon">{activeProject.techs[0]}</div>
+                          <div className="projects-preview__label">{projectsText.previewLabel}</div>
+                          <p className="projects-preview__copy">{projectsText.previewCopy}</p>
+                        </div>
+                      )}
                     </div>
 
                     <div className="projects-preview__actions">
+                      {hasDemo ? (
+                        <a
+                          href={activeProject.demo}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="projects-button projects-button--primary"
+                        >
+                          <HiArrowTopRightOnSquare />
+                          <span>{projectsText.viewDemo}</span>
+                        </a>
+                      ) : null}
                       <a
                         href={activeProject.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="projects-button projects-button--primary"
+                        className={hasDemo ? 'projects-button projects-button--outline' : 'projects-button projects-button--primary'}
                       >
                         <FaGithub />
                         <span>{projectsText.clientCode}</span>

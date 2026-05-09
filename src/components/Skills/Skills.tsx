@@ -25,7 +25,7 @@ import {
   SiTailwindcss,
   SiTypescript,
 } from 'react-icons/si'
-import type { SiteText } from '../i18n'
+import type { SiteText } from '../../i18n'
 import SkillsView, { type TechCategory, type TechIconMap } from './SkillsView'
 
 type SkillsProps = {

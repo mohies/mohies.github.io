@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react'
 import { HiArrowRight } from 'react-icons/hi'
-import type { SiteText } from '../i18n'
+import type { SiteText } from '../../i18n'
 import './About.scss'
 
 export type AboutSkill = {

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import emailjs from 'emailjs-com'
-import type { SiteText } from '../i18n'
+import type { SiteText } from '../../i18n'
 import ContactModalView from './ContactModalView'
 
 type Props = {

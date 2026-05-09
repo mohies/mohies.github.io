@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { FaCode, FaHeadset, FaLaptopCode, FaRocket, FaServer, FaTools } from 'react-icons/fa'
-import type { SiteText } from '../i18n'
+import type { SiteText } from '../../i18n'
 import AboutView, { type AboutFeature, type AboutSkill } from './AboutView'
 
 type AboutProps = {

@@ -1,4 +1,4 @@
-import type { Language, SiteText } from '../i18n'
+import type { Language, SiteText } from '../../i18n'
 import { HiMenuAlt3, HiX } from 'react-icons/hi'
 import './Navbar.scss'
 

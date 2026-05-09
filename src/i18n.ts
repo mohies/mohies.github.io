@@ -11,6 +11,8 @@ export type ProjectText = {
   description: string
   github: string
   extraRepo?: string
+  demo?: string
+  previewImage?: string
 }
 
 export type SiteText = {
@@ -139,9 +141,11 @@ export type SiteText = {
     barLabel: string
     previewLabel: string
     previewCopy: string
+    demoLabel: string
     clientCode: string
     backendCode: string
     stack: string
+    viewDemo: string
     viewClientCode: string
     viewBackendCode: string
     stackCopy: string
@@ -212,13 +216,13 @@ export const siteText: Record<Language, SiteText> = {
       ],
     },
     hero: {
-      pill: 'Pulido visual, rendimiento y mentalidad de producto',
-      title: 'Construyo productos digitales',
-      highlight: 'que se ven bien y se entregan rápido.',
-      subtitle: 'React | TypeScript | UI responsive | Interacciones limpias',
+      pill: 'Disponible para frontend, full stack o soporte IT',
+      title: 'Desarrollador Web Junior / Full Stack',
+      highlight: 'Frontend + Soporte IT',
+      subtitle: 'React, TypeScript, Angular, Django | UI responsive | APIs REST',
       copy:
-        'Diseño y desarrollo interfaces modernas con React y TypeScript, enfocándome en rendimiento, claridad y una experiencia consistente en móvil y escritorio.',
-      startProject: 'Empezar proyecto',
+        'Construyo interfaces responsive e integro APIs REST para productos reales. Busco un puesto junior en desarrollo web o soporte IT.',
+      startProject: 'Hablemos',
       viewWork: 'Ver proyectos',
       email: 'Correo',
       avatarAlt: 'Retrato de Mohcen',
@@ -297,12 +301,12 @@ export const siteText: Record<Language, SiteText> = {
       highlights: {
         label: 'Aptitudes profesionales',
         items: [
-          'Comunicación efectiva',
-          'Coordinación de equipos multifuncionales',
-          'Resolución de problemas',
-          'Dominio del paquete Office',
-          'Enfoque en ventas y negocios',
-          'Eficacia en la consecución de objetivos',
+          'APIs REST, autenticacion y control de acceso',
+          'CRUD, validaciones y formularios complejos',
+          'Responsive UI y experiencia movil',
+          'Git y GitHub en entregas reales',
+          'Docker y despliegues basicos',
+          'SQL y modelado de datos',
         ],
       },
       availability: {
@@ -397,9 +401,11 @@ export const siteText: Record<Language, SiteText> = {
       previewLabel: 'Vista previa',
       previewCopy:
         'Esta tarjeta está preparada para screenshots. Mientras tanto mantiene estructura clara, acciones visibles y buen comportamiento en móvil.',
+      demoLabel: 'Demo',
       clientCode: 'Código cliente',
       backendCode: 'Código backend',
       stack: 'Stack',
+      viewDemo: 'Ver demo',
       viewClientCode: 'Ver código cliente',
       viewBackendCode: 'Ver código backend',
       stackCopy:
@@ -516,13 +522,13 @@ export const siteText: Record<Language, SiteText> = {
       ],
     },
     hero: {
-      pill: 'UI polish, performance and product thinking',
-      title: 'Building digital products',
-      highlight: 'that feel sharp and ship fast.',
-      subtitle: 'React | TypeScript | Responsive UI | Clean interactions',
+      pill: 'Open to frontend, full stack or IT support roles',
+      title: 'Junior Web Developer / Full Stack',
+      highlight: 'Frontend + IT Support',
+      subtitle: 'React, TypeScript, Angular, Django | Responsive UI | REST APIs',
       copy:
-        'I design and build modern interfaces with React and TypeScript, focusing on performance, clarity and a consistent experience across devices.',
-      startProject: 'Start a project',
+        'I build responsive interfaces and integrate REST APIs for real products. Open to junior web development or IT support roles.',
+      startProject: 'Lets talk',
       viewWork: 'View work',
       email: 'Email',
       avatarAlt: 'Portrait of Mohcen',
@@ -601,12 +607,12 @@ export const siteText: Record<Language, SiteText> = {
       highlights: {
         label: 'Professional skills',
         items: [
-          'Effective communication',
-          'Coordination of multifunctional teams',
-          'Problem solving',
-          'Mastery of the Office suite',
-          'Sales and business focus',
-          'Effectiveness in achieving objectives',
+          'REST APIs, authentication and access control',
+          'CRUD flows, validations and complex forms',
+          'Responsive UI and mobile experience',
+          'Git and GitHub for real deliveries',
+          'Docker and basic deployments',
+          'SQL and data modeling',
         ],
       },
       availability: {
@@ -698,9 +704,11 @@ export const siteText: Record<Language, SiteText> = {
       previewLabel: 'Preview',
       previewCopy:
         'This card is ready for screenshots later, while keeping clear structure, visible actions and mobile-friendly behavior.',
+      demoLabel: 'Demo',
       clientCode: 'Client Code',
       backendCode: 'Backend Code',
       stack: 'Stack',
+      viewDemo: 'View demo',
       viewClientCode: 'View Client Code',
       viewBackendCode: 'View Backend Code',
       stackCopy:

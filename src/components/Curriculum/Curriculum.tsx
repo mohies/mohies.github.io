@@ -1,4 +1,4 @@
-import type { SiteText } from '../i18n'
+import type { SiteText } from '../../i18n'
 import CurriculumView from './CurriculumView'
 
 type CurriculumProps = {

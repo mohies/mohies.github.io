@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react'
 import { HiOutlineLightningBolt } from 'react-icons/hi'
-import type { SiteText } from '../i18n'
+import type { SiteText } from '../../i18n'
 import './Skills.scss'
 
 export type TechCategory = 'All' | 'Frontend' | 'Backend' | 'Tools'

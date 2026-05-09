@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { HiOutlineMail } from 'react-icons/hi'
-import type { SiteText } from '../i18n'
+import type { SiteText } from '../../i18n'
 import './ContactModal.scss'
 
 type ContactModalViewProps = {

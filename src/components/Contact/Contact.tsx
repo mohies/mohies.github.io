@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import type { SiteText } from '../i18n'
+import type { SiteText } from '../../i18n'
 import ContactView from './ContactView'
 
 type ContactProps = {

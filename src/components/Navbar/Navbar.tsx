@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import type { Language, SiteText } from '../i18n'
+import type { Language, SiteText } from '../../i18n'
 import NavbarView from './NavbarView'
 
 type NavbarProps = {

@@ -1,6 +1,6 @@
 import { FaEnvelope, FaGithub, FaLinkedin } from 'react-icons/fa'
 import { HiArrowDown, HiSparkles } from 'react-icons/hi'
-import type { SiteText } from '../i18n'
+import type { SiteText } from '../../i18n'
 import './Hero.scss'
 
 type HeroViewProps = {
